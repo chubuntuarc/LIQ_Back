@@ -1,4 +1,4 @@
-USE [LIQ19_Liquidaciones_V0000_R0] 
+USE [LIQ19_Liquidaciones_V9999_R0] 
 GO
 /*
 Navicat MySQL Data Transfer

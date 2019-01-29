@@ -1,4 +1,4 @@
-USE [LIQ19_Liquidaciones_V0000_R0] 
+USE [LIQ19_Liquidaciones_V9999_R0] 
 GO
 /*
 Navicat MySQL Data Transfer
@@ -27,11 +27,11 @@ CREATE TABLE [BD_Biogas_Liqsys_cortescaja] (
   [idCorte] int NOT NULL, --AUTO_INCREMENT,
   [fechaC] datetime NOT NULL DEFAULT '2079-11-10 00:00:00',
   [sucursal] varchar(30) NOT NULL,
-  [tipoC] varchar(20) NOT NULL DEFAULT 'BANCO' COMMENT 'TRASLADOVALORES,BANCO,TRANSFERENCIA,TERMINAL,VALES',
+  [tipoC] varchar(20) NOT NULL DEFAULT 'BANCO',
   [importe] decimal(10,2) NOT NULL DEFAULT '0.00',
   [cuenta] varchar(20) NOT NULL DEFAULT 'N/D',
   [referencia] varchar(50) DEFAULT NULL,
-  [estadoC] varchar(10) NOT NULL DEFAULT 'VALIDO' COMMENT 'VALIDO,CANCELADO',
+  [estadoC] varchar(10) NOT NULL DEFAULT 'VALIDO',
   [sesion] int NOT NULL DEFAULT 0,
   [fechaSesion] date NOT NULL DEFAULT '2079-11-10',
   [cajero] varchar(30) NOT NULL DEFAULT 'N/D',
