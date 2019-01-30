@@ -186,6 +186,7 @@ CREATE PROCEDURE [dbo].[PG_IN_PUNTO_VENTA]
 	-- ===========================			
 	@PP_D_PUNTO_VENTA			VARCHAR(100),
 	@PP_S_PUNTO_VENTA			VARCHAR(10),
+	@PP_C_PUNTO_VENTA			VARCHAR(255),
 	@PP_O_PUNTO_VENTA			INT,
 	-- ===========================			
 	@PP_K_ESTATUS_PUNTO_VENTA	INT,
@@ -229,7 +230,7 @@ AS
 		-- ====================================
 		INSERT INTO PUNTO_VENTA
 			(	[K_PUNTO_VENTA],
-				[D_PUNTO_VENTA], [S_PUNTO_VENTA], [O_PUNTO_VENTA],
+				[D_PUNTO_VENTA], [S_PUNTO_VENTA], [C_PUNTO_VENTA], [O_PUNTO_VENTA],
 				-- ===========================
 				[K_ESTATUS_PUNTO_VENTA], [K_TIPO_PUNTO_VENTA],
 				-- ===========================
@@ -239,7 +240,7 @@ AS
 				[L_BORRADO], [K_USUARIO_BAJA], [F_BAJA]  )
 		VALUES	
 			(	@VP_K_PUNTO_VENTA,
-				@PP_D_PUNTO_VENTA, @PP_S_PUNTO_VENTA, @PP_O_PUNTO_VENTA,
+				@PP_D_PUNTO_VENTA, @PP_S_PUNTO_VENTA, @PP_C_PUNTO_VENTA, @PP_O_PUNTO_VENTA,
 				-- ===========================
 				@PP_K_ESTATUS_PUNTO_VENTA, @PP_K_TIPO_PUNTO_VENTA,
 				-- ===========================
@@ -287,6 +288,7 @@ CREATE PROCEDURE [dbo].[PG_UP_PUNTO_VENTA]
 	@PP_K_PUNTO_VENTA				INT,
 	@PP_D_PUNTO_VENTA				VARCHAR(100),
 	@PP_S_PUNTO_VENTA				VARCHAR(10),
+	@PP_C_PUNTO_VENTA				VARCHAR(255),
 	@PP_O_PUNTO_VENTA				INT,
 	-- ===========================			
 	@PP_K_ESTATUS_PUNTO_VENTA		INT,
@@ -324,6 +326,7 @@ AS
 		SET			
 				[D_PUNTO_VENTA]			= @PP_D_PUNTO_VENTA, 
 				[S_PUNTO_VENTA]			= @PP_S_PUNTO_VENTA, 
+				[C_PUNTO_VENTA]			= @PP_C_PUNTO_VENTA, 
 				[O_PUNTO_VENTA]			= @PP_O_PUNTO_VENTA,
 				-- ===========================
 				[K_ESTATUS_PUNTO_VENTA]	= @PP_K_ESTATUS_PUNTO_VENTA,
