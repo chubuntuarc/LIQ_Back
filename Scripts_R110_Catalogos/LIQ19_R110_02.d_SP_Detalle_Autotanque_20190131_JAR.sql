@@ -23,7 +23,7 @@ GO
 -- //////////////////////////////////////////////////////////////
 
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_LI_DETALLE_AUTOTANQUE]') AND type in (N'P', N'PC'))
-	DROP PROCEDURE [dbo].[PG_LI_AUTOTANQUE]
+	DROP PROCEDURE [dbo].[PG_LI_DETALLE_AUTOTANQUE]
 GO
 
 -- EXEC [dbo].[PG_LI_DETALLE_AUTOTANQUE] 0,0,0,''
@@ -92,6 +92,65 @@ AS
 
 	-- ////////////////////////////////////////////////
 GO
+
+
+
+-- //////////////////////////////////////////////////////////////
+-- // STORED PROCEDURE ---> SELECT / FICHA
+-- //////////////////////////////////////////////////////////////
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_SK_DETALLE_AUTOTANQUE]') AND type in (N'P', N'PC'))
+	DROP PROCEDURE [dbo].[PG_SK_DETALLE_AUTOTANQUE]
+GO
+
+-- EXEC [dbo].[PG_SK_DETALLE_AUTOTANQUE] 0,0,0,41
+
+CREATE PROCEDURE [dbo].[PG_SK_DETALLE_AUTOTANQUE]
+	@PP_L_DEBUG					INT,
+	@PP_K_SISTEMA_EXE			INT,
+	@PP_K_USUARIO_ACCION		INT,
+	-- ===========================
+	@PP_K_PUNTO_VENTA			INT
+AS
+
+	DECLARE @VP_MENSAJE		VARCHAR(300)
+	
+	SET		@VP_MENSAJE		= ''
+	
+	-- // SECCION#1 /////////////////////////////////////////////////////////// VALIDACIONES + REGLAS DE NEGOCIO 	
+
+	IF @VP_MENSAJE=''
+		EXECUTE [dbo].[PG_RN_DATA_ACCESO_SEEK]		@PP_L_DEBUG, @PP_K_SISTEMA_EXE, @PP_K_USUARIO_ACCION,	
+													1, -- @PP_K_DATA_SISTEMA,	
+													@OU_RESULTADO_VALIDACION = @VP_MENSAJE		OUTPUT
+	
+	-- // SECCION#2 ////////////////////////////////////////////////////////// ACCION A REALIZAR
+	
+	DECLARE @VP_LI_N_REGISTROS INT = 10
+
+	IF @VP_MENSAJE<>''
+		SET @VP_LI_N_REGISTROS = 0
+	
+	SELECT	TOP ( @VP_LI_N_REGISTROS )
+			PUNTO_VENTA.*,
+			-- ==============================
+			DETALLE_AUTOTANQUE.*,
+			-- ==============================
+			USUARIO.D_USUARIO AS D_USUARIO_CAMBIO
+	FROM	DETALLE_AUTOTANQUE, USUARIO, PUNTO_VENTA
+			-- ==============================
+	WHERE	DETALLE_AUTOTANQUE.K_USUARIO_CAMBIO=USUARIO.K_USUARIO
+	AND		DETALLE_AUTOTANQUE.K_PUNTO_VENTA=PUNTO_VENTA.K_PUNTO_VENTA
+			-- ==============================
+	AND		PUNTO_VENTA.L_BORRADO=0
+	AND		DETALLE_AUTOTANQUE.K_PUNTO_VENTA=@PP_K_PUNTO_VENTA
+
+	-- // SECCION#3 ////////////////////////////////////////////////////////// MENSAJE DE SALIDA
+	-- // NO ES REQUERIDA LA SECCION #3
+
+	-- ////////////////////////////////////////////////
+GO
+
 	
 -- //////////////////////////////////////////////////////////////
 -- // STORED PROCEDURE ---> INSERT

@@ -23,7 +23,7 @@ GO
 -- //////////////////////////////////////////////////////////////
 
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_LI_DETALLE_ESTACION_CARBURACION]') AND type in (N'P', N'PC'))
-	DROP PROCEDURE [dbo].[PG_LI_ESTACION_CARBURACION]
+	DROP PROCEDURE [dbo].[PG_LI_DETALLE_ESTACION_CARBURACION]
 GO
 
 -- EXEC [dbo].[PG_LI_DETALLE_ESTACION_CARBURACION] 0,0,0,''
@@ -89,6 +89,64 @@ AS
 			OR	DETALLE_ESTACION_CARBURACION.K_DETALLE_ESTACION_CARBURACION=@VP_K_FOLIO	)	
 			-- ==============================
 	ORDER BY DIRECCION ASC
+
+	-- ////////////////////////////////////////////////
+GO
+
+
+
+-- //////////////////////////////////////////////////////////////
+-- // STORED PROCEDURE ---> SELECT / FICHA
+-- //////////////////////////////////////////////////////////////
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_SK_DETALLE_ESTACION_CARBURACION]') AND type in (N'P', N'PC'))
+	DROP PROCEDURE [dbo].[PG_SK_DETALLE_ESTACION_CARBURACION]
+GO
+
+-- EXEC [dbo].[PG_SK_DETALLE_ESTACION_CARBURACION] 0,0,0,50
+
+CREATE PROCEDURE [dbo].[PG_SK_DETALLE_ESTACION_CARBURACION]
+	@PP_L_DEBUG					INT,
+	@PP_K_SISTEMA_EXE			INT,
+	@PP_K_USUARIO_ACCION		INT,
+	-- ===========================
+	@PP_K_PUNTO_VENTA			INT
+AS
+
+	DECLARE @VP_MENSAJE		VARCHAR(300)
+	
+	SET		@VP_MENSAJE		= ''
+	
+	-- // SECCION#1 /////////////////////////////////////////////////////////// VALIDACIONES + REGLAS DE NEGOCIO 	
+
+	IF @VP_MENSAJE=''
+		EXECUTE [dbo].[PG_RN_DATA_ACCESO_SEEK]		@PP_L_DEBUG, @PP_K_SISTEMA_EXE, @PP_K_USUARIO_ACCION,	
+													1, -- @PP_K_DATA_SISTEMA,	
+													@OU_RESULTADO_VALIDACION = @VP_MENSAJE		OUTPUT
+	
+	-- // SECCION#2 ////////////////////////////////////////////////////////// ACCION A REALIZAR
+	
+	DECLARE @VP_LI_N_REGISTROS INT = 10
+
+	IF @VP_MENSAJE<>''
+		SET @VP_LI_N_REGISTROS = 0
+	
+	SELECT	TOP ( @VP_LI_N_REGISTROS )
+			PUNTO_VENTA.*,
+			-- ==============================
+			DETALLE_ESTACION_CARBURACION.*,
+			-- ==============================
+			USUARIO.D_USUARIO AS D_USUARIO_CAMBIO
+	FROM	DETALLE_ESTACION_CARBURACION, USUARIO, PUNTO_VENTA
+			-- ==============================
+	WHERE	DETALLE_ESTACION_CARBURACION.K_USUARIO_CAMBIO=USUARIO.K_USUARIO
+	AND		DETALLE_ESTACION_CARBURACION.K_PUNTO_VENTA=PUNTO_VENTA.K_PUNTO_VENTA
+			-- ==============================
+	AND		PUNTO_VENTA.L_BORRADO=0
+	AND		DETALLE_ESTACION_CARBURACION.K_PUNTO_VENTA=@PP_K_PUNTO_VENTA
+
+	-- // SECCION#3 ////////////////////////////////////////////////////////// MENSAJE DE SALIDA
+	-- // NO ES REQUERIDA LA SECCION #3
 
 	-- ////////////////////////////////////////////////
 GO

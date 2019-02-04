@@ -101,7 +101,7 @@ IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_SK_
 	DROP PROCEDURE [dbo].[PG_SK_DETALLE_PORTATIL]
 GO
 
--- EXEC [dbo].[PG_SK_DETALLE_PORTATIL] 0,0,0,47
+-- EXEC [dbo].[PG_SK_DETALLE_PORTATIL] 0,0,0,41
 
 CREATE PROCEDURE [dbo].[PG_SK_DETALLE_PORTATIL]
 	@PP_L_DEBUG					INT,
@@ -130,6 +130,8 @@ AS
 		SET @VP_LI_N_REGISTROS = 0
 	
 	SELECT	TOP ( @VP_LI_N_REGISTROS )
+			PUNTO_VENTA.*,
+			-- ==============================
 			DETALLE_PORTATIL.*,
 			-- ==============================
 			USUARIO.D_USUARIO AS D_USUARIO_CAMBIO
@@ -146,6 +148,8 @@ AS
 
 	-- ////////////////////////////////////////////////
 GO
+
+
 	
 -- //////////////////////////////////////////////////////////////
 -- // STORED PROCEDURE ---> INSERT
