@@ -6,7 +6,7 @@
 -- // OPERACION:		LIBERACION / CARGA INICIAL
 -- ////////////////////////////////////////////////////////////// 
 
-USE [PYF18_Finanzas_V9999_R0] 
+USE [LIQ19_Liquidaciones_V9999_R0] 
 GO
 
 -- //////////////////////////////////////////////////////////////
@@ -169,7 +169,7 @@ EXECUTE [dbo].[PG_CI_UNIDAD_OPERATIVA] 0, 0, 41, 'NACOZARI', 'NACOZARI', 'NACZA'
 EXECUTE [dbo].[PG_CI_UNIDAD_OPERATIVA] 0, 0, 42, 'NOGALES', 'NOGALES', 'NOGLS', 420, 1, 10, 50, 13, 60, 36, 1021, '', '', '', '', '', '', '', '', ''
 EXECUTE [dbo].[PG_CI_UNIDAD_OPERATIVA] 0, 0, 43, 'SANTA ANA', 'SANTA ANA', 'STANA', 430, 1, 10, 50, 14, 75, 36, 1022, '', '', '', '', '', '', '', '', ''
 EXECUTE [dbo].[PG_CI_UNIDAD_OPERATIVA] 0, 0, 44, 'CABORCA', 'CABORCA', 'CBRCA', 440, 1, 10, 50, 15, 21, 36, 1021, '', '', '', '', '', '', '', '', ''
-EXECUTE [dbo].[PG_CI_UNIDAD_OPERATIVA] 0, 0, 45, 'PUERTO PEÑASCO', 'PUERTO PEÑASCO', 'PEÑSC', 450, 1, 10, 50, 16, 70, 36, 1021, '', '', '', '', '', '', '', '', ''
+EXECUTE [dbo].[PG_CI_UNIDAD_OPERATIVA] 0, 0, 45, 'PUERTO PEï¿½ASCO', 'PUERTO PEï¿½ASCO', 'PEï¿½SC', 450, 1, 10, 50, 16, 70, 36, 1021, '', '', '', '', '', '', '', '', ''
 EXECUTE [dbo].[PG_CI_UNIDAD_OPERATIVA] 0, 0, 46, 'GUAYMAS', 'GUAYMAS', 'GUAYM', 460, 1, 10, 50, 17, 42, 36, 1023, '', '', '', '', '', '', '', '', ''
 EXECUTE [dbo].[PG_CI_UNIDAD_OPERATIVA] 0, 0, 47, 'OBREGON', 'OBREGON', 'OBRGN', 470, 1, 10, 50, 18, 61, 36, 1023, '', '', '', '', '', '', '', '', ''
 EXECUTE [dbo].[PG_CI_UNIDAD_OPERATIVA] 0, 0, 48, 'NAVOJOA', 'NAVOJOA', 'NAVOJ', 480, 1, 10, 50, 19, 59, 36, 1023, '', '', '', '', '', '', '', '', ''

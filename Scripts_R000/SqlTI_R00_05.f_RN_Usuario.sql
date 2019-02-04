@@ -6,7 +6,7 @@
 -- // OPERACION:		LIBERACION / REGLAS NEGOCIO
 -- ////////////////////////////////////////////////////////////// 
 
-USE [TRA19_Transportadora_V9999_R0] 
+USE [LIQ19_Liquidaciones_V9999_R0] 
 GO
 
 -- //////////////////////////////////////////////////////////////
@@ -95,7 +95,7 @@ AS
 										WHERE	D_USUARIO =	@PP_D_USUARIO
 										AND		K_USUARIO <>@PP_K_USUARIO
 			IF @VP_EXISTE_DESC > 0
-				SET	@VP_RESULTADO = @VP_RESULTADO +CHAR(13)+CHAR(10) + 'La descripción ya existe'
+				SET	@VP_RESULTADO = @VP_RESULTADO +CHAR(13)+CHAR(10) + 'La descripciï¿½n ya existe'
 		END	
 		
 	-- ///////////////////////////////////////////

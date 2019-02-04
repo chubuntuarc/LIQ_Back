@@ -55,9 +55,8 @@ DECLARE @VP_STR_RUTA_PROYECTO			VARCHAR(MAX)
 DECLARE @VP_STR_RUTA_CONSTRUCCION		VARCHAR(MAX)
 
 SET @VP_STR_BASE_DATOS			= 'LIQ19_Liquidaciones_V9999_R0'
-SET @VP_STR_RUTA_PROYECTO		= 'C:\1.Tomza_JAR\TI_TecnologiaInformacion\Workbook\'
---SET @VP_STR_RUTA_CONSTRUCCION	= 'LIQ19_Liquidaciones\4.Construccion\CodigoSQL\LIQ19_Liberacion_R0.00_Base_V0001\'
-SET @VP_STR_RUTA_CONSTRUCCION	= 'BASE_PRUEBA\LIQ_Back\'
+SET @VP_STR_RUTA_PROYECTO		= 'D:\2019.Proyectos\LIQ19_Liquidaciones\'
+SET @VP_STR_RUTA_CONSTRUCCION	= 'LIQ19_SQL\'
 
 -- ========================================
 
@@ -79,41 +78,9 @@ DECLARE @VP_IN_PROCESAR_ARCHIVO			INT
 -- ========================================
 
 	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R000\')
+	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R010_Estructura\')
 	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R100_Biogas\')
-
-	/*
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R101_Estructura\')
-
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R102_POV\')
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R103\')
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R104_Personal\')
-
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R110_D0MA_SetUp\')
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R111_D0MA_TA\')
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R112_D0MA_SP\')
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R113\')
-
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R150_POV_CEMEC_FLUP\')
-
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R201_FIN\')
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R202\')
-
-
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R300_AUT\')
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R301\')
-
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R400_Control\')
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R500_PPTO\')
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R600\')
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R610_CXP\')
-
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R700_FLU\')
-
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R901_WFW\')
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R902_Viaticos\')
-	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R903_Cuentas\')
-
-	*/
+	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R110_Catalogos\')
 
 -- ========================================
 
@@ -155,7 +122,7 @@ WHILE @@FETCH_STATUS = 0
 
 		-- ========================================
 
-		IF LEFT(@VP_STR_ARCHIVO_SQL,5)='TRA19' 
+		IF LEFT(@VP_STR_ARCHIVO_SQL,5)='LIQ19' 
 			SET @VP_IN_PROCESAR_ARCHIVO = 1
 
 		IF LEFT(@VP_STR_ARCHIVO_SQL,5)='SqlTI' 

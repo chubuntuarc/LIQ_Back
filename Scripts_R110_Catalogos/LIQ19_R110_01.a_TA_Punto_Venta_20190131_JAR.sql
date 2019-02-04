@@ -36,6 +36,112 @@ GO
 
 
 
+-- //////////////////////////////////////////////////////////////
+-- // ESTATUS_PUNTO_VENTA
+-- //////////////////////////////////////////////////////////////
+
+
+CREATE TABLE [dbo].[ESTATUS_PUNTO_VENTA] (
+	[K_ESTATUS_PUNTO_VENTA]	[INT]			NOT NULL,
+	[D_ESTATUS_PUNTO_VENTA]	[VARCHAR] (100) NOT NULL,
+	[S_ESTATUS_PUNTO_VENTA]	[VARCHAR] (10)  NOT NULL,
+	[O_ESTATUS_PUNTO_VENTA]	[INT]			NOT NULL,
+	[C_ESTATUS_PUNTO_VENTA]	[VARCHAR] (255) NOT NULL,
+	[L_ESTATUS_PUNTO_VENTA]	[INT]			NOT NULL
+) ON [PRIMARY]
+GO
+
+
+-- //////////////////////////////////////////////////////////////
+
+
+ALTER TABLE [dbo].[ESTATUS_PUNTO_VENTA]
+	ADD CONSTRAINT [PK_ESTATUS_PUNTO_VENTA]
+		PRIMARY KEY CLUSTERED ([K_ESTATUS_PUNTO_VENTA])
+GO
+
+
+CREATE UNIQUE NONCLUSTERED 
+	INDEX [UN_ESTATUS_PUNTO_VENTA_01_DESCRIPCION] 
+	   ON [dbo].[ESTATUS_PUNTO_VENTA] ( [D_ESTATUS_PUNTO_VENTA] )
+GO
+
+
+-- //////////////////////////////////////////////////////////////
+
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_CI_ESTATUS_PUNTO_VENTA]') AND type in (N'P', N'PC'))
+	DROP PROCEDURE [dbo].[PG_CI_ESTATUS_PUNTO_VENTA]
+GO
+
+-- //////////////////////////////////////////////////////////////
+-- //				CI-ESTATUS_PUNTO_VENTA
+-- //////////////////////////////////////////////////////////////
+
+
+CREATE PROCEDURE [dbo].[PG_CI_ESTATUS_PUNTO_VENTA]
+	@PP_L_DEBUG						INT,
+	@PP_K_SISTEMA_EXE				INT,
+	-- ========================================
+	@PP_K_ESTATUS_PUNTO_VENTA		INT,
+	@PP_D_ESTATUS_PUNTO_VENTA		VARCHAR(100),
+	@PP_S_ESTATUS_PUNTO_VENTA		VARCHAR(10),
+	@PP_O_ESTATUS_PUNTO_VENTA		INT,
+	@PP_C_ESTATUS_PUNTO_VENTA		VARCHAR(255),
+	@PP_L_ESTATUS_PUNTO_VENTA		INT
+AS
+	
+	-- ===============================
+
+	DECLARE @VP_K_EXISTE	INT
+
+	SELECT	@VP_K_EXISTE =	K_ESTATUS_PUNTO_VENTA
+							FROM	ESTATUS_PUNTO_VENTA
+							WHERE	K_ESTATUS_PUNTO_VENTA=@PP_K_ESTATUS_PUNTO_VENTA
+
+	-- ===============================
+
+	IF @VP_K_EXISTE IS NULL
+		INSERT INTO ESTATUS_PUNTO_VENTA	
+			(	K_ESTATUS_PUNTO_VENTA,				D_ESTATUS_PUNTO_VENTA, 
+				S_ESTATUS_PUNTO_VENTA,				O_ESTATUS_PUNTO_VENTA,
+				C_ESTATUS_PUNTO_VENTA,
+				L_ESTATUS_PUNTO_VENTA				)		
+		VALUES	
+			(	@PP_K_ESTATUS_PUNTO_VENTA,			@PP_D_ESTATUS_PUNTO_VENTA,	
+				@PP_S_ESTATUS_PUNTO_VENTA,			@PP_O_ESTATUS_PUNTO_VENTA,
+				@PP_C_ESTATUS_PUNTO_VENTA,
+				@PP_L_ESTATUS_PUNTO_VENTA			)
+	ELSE
+		UPDATE	ESTATUS_PUNTO_VENTA
+		SET		D_ESTATUS_PUNTO_VENTA	= @PP_D_ESTATUS_PUNTO_VENTA,	
+				S_ESTATUS_PUNTO_VENTA	= @PP_S_ESTATUS_PUNTO_VENTA,			
+				O_ESTATUS_PUNTO_VENTA	= @PP_O_ESTATUS_PUNTO_VENTA,
+				C_ESTATUS_PUNTO_VENTA	= @PP_C_ESTATUS_PUNTO_VENTA,
+				L_ESTATUS_PUNTO_VENTA	= @PP_L_ESTATUS_PUNTO_VENTA	
+		WHERE	K_ESTATUS_PUNTO_VENTA=@PP_K_ESTATUS_PUNTO_VENTA
+
+	-- =========================================================
+GO
+
+-- //////////////////////////////////////////////////////////////
+
+
+
+
+-- ===============================================
+SET NOCOUNT ON
+-- ===============================================
+
+EXECUTE [dbo].[PG_CI_ESTATUS_PUNTO_VENTA] 0, 0, 0, 'INACTIVO',		'INACT', 2, '', 1
+EXECUTE [dbo].[PG_CI_ESTATUS_PUNTO_VENTA] 0, 0, 1, 'ACTIVO',		'ACTVO', 1, '', 1
+GO
+
+-- ===============================================
+SET NOCOUNT OFF
+-- ===============================================
+
+
 
 
 -- //////////////////////////////////////////////////////////////
@@ -43,12 +149,12 @@ GO
 -- //////////////////////////////////////////////////////////////
 
 CREATE TABLE [dbo].[TIPO_PUNTO_VENTA] (
-	[K_TIPO_PUNTO_VENTA]	[INT] NOT NULL,
+	[K_TIPO_PUNTO_VENTA]	[INT]			NOT NULL,
 	[D_TIPO_PUNTO_VENTA]	[VARCHAR] (100) NOT NULL,
-	[S_TIPO_PUNTO_VENTA]	[VARCHAR] (10) NOT NULL,
-	[O_TIPO_PUNTO_VENTA]	[INT] NOT NULL,
+	[S_TIPO_PUNTO_VENTA]	[VARCHAR] (10)  NOT NULL,
+	[O_TIPO_PUNTO_VENTA]	[INT]			NOT NULL,
 	[C_TIPO_PUNTO_VENTA]	[VARCHAR] (255) NOT NULL,
-	[L_TIPO_PUNTO_VENTA]	[INT] NOT NULL
+	[L_TIPO_PUNTO_VENTA]	[INT]			NOT NULL
 ) ON [PRIMARY]
 GO
 
@@ -67,16 +173,6 @@ CREATE UNIQUE NONCLUSTERED
 	   ON [dbo].[TIPO_PUNTO_VENTA] ( [D_TIPO_PUNTO_VENTA] )
 GO
 
--- //////////////////////////////////////////////////////////////
-
-
-ALTER TABLE [dbo].[TIPO_PUNTO_VENTA] ADD 
-	CONSTRAINT [FK_TIPO_PUNTO_VENTA_01] 
-		FOREIGN KEY ( [L_TIPO_PUNTO_VENTA] ) 
-		REFERENCES [dbo].[ESTATUS_ACTIVO] ( [K_ESTATUS_ACTIVO] )
-GO
-
-
 
 -- //////////////////////////////////////////////////////////////
 
@@ -85,10 +181,13 @@ IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_CI_
 	DROP PROCEDURE [dbo].[PG_CI_TIPO_PUNTO_VENTA]
 GO
 
+-- //////////////////////////////////////////////////////////////
+-- //				CI-TIPO_PUNTO_VENTA
+-- //////////////////////////////////////////////////////////////
 
 CREATE PROCEDURE [dbo].[PG_CI_TIPO_PUNTO_VENTA]
-	@PP_L_DEBUG							INT,
-	@PP_K_SISTEMA_EXE					INT,
+	@PP_L_DEBUG						INT,
+	@PP_K_SISTEMA_EXE				INT,
 	-- ========================================
 	@PP_K_TIPO_PUNTO_VENTA			INT,
 	@PP_D_TIPO_PUNTO_VENTA			VARCHAR(100),
@@ -149,138 +248,21 @@ SET NOCOUNT OFF
 -- ===============================================
 
 
-
 -- //////////////////////////////////////////////////////////////
--- // ESTATUS_PUNTO_VENTA
--- //////////////////////////////////////////////////////////////
-
-
-CREATE TABLE [dbo].[ESTATUS_PUNTO_VENTA] (
-	[K_ESTATUS_PUNTO_VENTA]	[INT] NOT NULL,
-	[D_ESTATUS_PUNTO_VENTA]	[VARCHAR] (100) NOT NULL,
-	[S_ESTATUS_PUNTO_VENTA]	[VARCHAR] (10) NOT NULL,
-	[O_ESTATUS_PUNTO_VENTA]	[INT] NOT NULL,
-	[C_ESTATUS_PUNTO_VENTA]	[VARCHAR] (255) NOT NULL,
-	[L_ESTATUS_PUNTO_VENTA]	[INT] NOT NULL
-) ON [PRIMARY]
-GO
-
-
--- //////////////////////////////////////////////////////////////
-
-
-ALTER TABLE [dbo].[ESTATUS_PUNTO_VENTA]
-	ADD CONSTRAINT [PK_ESTATUS_PUNTO_VENTA]
-		PRIMARY KEY CLUSTERED ([K_ESTATUS_PUNTO_VENTA])
-GO
-
-
-CREATE UNIQUE NONCLUSTERED 
-	INDEX [UN_ESTATUS_PUNTO_VENTA_01_DESCRIPCION] 
-	   ON [dbo].[ESTATUS_PUNTO_VENTA] ( [D_ESTATUS_PUNTO_VENTA] )
-GO
-
--- //////////////////////////////////////////////////////////////
-
-
-ALTER TABLE [dbo].[ESTATUS_PUNTO_VENTA] ADD 
-	CONSTRAINT [FK_ESTATUS_PUNTO_VENTA_01] 
-		FOREIGN KEY ( [L_ESTATUS_PUNTO_VENTA] ) 
-		REFERENCES [dbo].[ESTATUS_ACTIVO] ( [K_ESTATUS_ACTIVO] )
-GO
-
-
--- //////////////////////////////////////////////////////////////
-
-
-IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_CI_ESTATUS_PUNTO_VENTA]') AND type in (N'P', N'PC'))
-	DROP PROCEDURE [dbo].[PG_CI_ESTATUS_PUNTO_VENTA]
-GO
-
-
-CREATE PROCEDURE [dbo].[PG_CI_ESTATUS_PUNTO_VENTA]
-	@PP_L_DEBUG							INT,
-	@PP_K_SISTEMA_EXE					INT,
-	-- ========================================
-	@PP_K_ESTATUS_PUNTO_VENTA		INT,
-	@PP_D_ESTATUS_PUNTO_VENTA		VARCHAR(100),
-	@PP_S_ESTATUS_PUNTO_VENTA		VARCHAR(10),
-	@PP_O_ESTATUS_PUNTO_VENTA		INT,
-	@PP_C_ESTATUS_PUNTO_VENTA		VARCHAR(255),
-	@PP_L_ESTATUS_PUNTO_VENTA		INT
-AS
-	
-	-- ===============================
-
-	DECLARE @VP_K_EXISTE	INT
-
-	SELECT	@VP_K_EXISTE =	K_ESTATUS_PUNTO_VENTA
-							FROM	ESTATUS_PUNTO_VENTA
-							WHERE	K_ESTATUS_PUNTO_VENTA=@PP_K_ESTATUS_PUNTO_VENTA
-
-	-- ===============================
-
-	IF @VP_K_EXISTE IS NULL
-		INSERT INTO ESTATUS_PUNTO_VENTA	
-			(	K_ESTATUS_PUNTO_VENTA,				D_ESTATUS_PUNTO_VENTA, 
-				S_ESTATUS_PUNTO_VENTA,				O_ESTATUS_PUNTO_VENTA,
-				C_ESTATUS_PUNTO_VENTA,
-				L_ESTATUS_PUNTO_VENTA				)		
-		VALUES	
-			(	@PP_K_ESTATUS_PUNTO_VENTA,			@PP_D_ESTATUS_PUNTO_VENTA,	
-				@PP_S_ESTATUS_PUNTO_VENTA,			@PP_O_ESTATUS_PUNTO_VENTA,
-				@PP_C_ESTATUS_PUNTO_VENTA,
-				@PP_L_ESTATUS_PUNTO_VENTA			)
-	ELSE
-		UPDATE	ESTATUS_PUNTO_VENTA
-		SET		D_ESTATUS_PUNTO_VENTA	= @PP_D_ESTATUS_PUNTO_VENTA,	
-				S_ESTATUS_PUNTO_VENTA	= @PP_S_ESTATUS_PUNTO_VENTA,			
-				O_ESTATUS_PUNTO_VENTA	= @PP_O_ESTATUS_PUNTO_VENTA,
-				C_ESTATUS_PUNTO_VENTA	= @PP_C_ESTATUS_PUNTO_VENTA,
-				L_ESTATUS_PUNTO_VENTA	= @PP_L_ESTATUS_PUNTO_VENTA	
-		WHERE	K_ESTATUS_PUNTO_VENTA=@PP_K_ESTATUS_PUNTO_VENTA
-
-	-- =========================================================
-GO
-
--- //////////////////////////////////////////////////////////////
-
-
-
-
--- ===============================================
-SET NOCOUNT ON
--- ===============================================
-
-EXECUTE [dbo].[PG_CI_ESTATUS_PUNTO_VENTA] 0, 0, 0, 'INACTIVO',		'INACT', 1, '', 1
-EXECUTE [dbo].[PG_CI_ESTATUS_PUNTO_VENTA] 0, 0, 1, 'ACTIVO',		'ACTVO', 1, '', 1
-GO
-
--- ===============================================
-SET NOCOUNT OFF
--- ===============================================
-
-
-
-
-
-
-
--- //////////////////////////////////////////////////////////////
--- // PUNTO_VENTA
+-- //					PUNTO_VENTA
 -- //////////////////////////////////////////////////////////////
 
 CREATE TABLE [dbo].[PUNTO_VENTA] (
 	[K_PUNTO_VENTA]				[INT]			NOT NULL,
-	[D_PUNTO_VENTA]				[VARCHAR](100)	NOT NULL,
+	[D_PUNTO_VENTA]				[VARCHAR](255)	NOT NULL,
 	[S_PUNTO_VENTA]				[VARCHAR](10)	NOT NULL,
-	[C_PUNTO_VENTA]				[VARCHAR](255)	,
+	[C_PUNTO_VENTA]				[VARCHAR](500)	,
 	[O_PUNTO_VENTA]				[INT]			NOT NULL,
 	-- ============================	
 	[K_ESTATUS_PUNTO_VENTA]		[INT]			NOT NULL,
 	[K_TIPO_PUNTO_VENTA]		[INT]			NOT NULL,
 	-- ============================		
-	[SUCURSAL]					[VARCHAR](100)	NOT NULL
+	[K_UNIDAD_OPERATIVA]		[VARCHAR](100)	NOT NULL
 ) ON [PRIMARY]
 GO
 

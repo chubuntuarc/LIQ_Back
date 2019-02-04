@@ -6,7 +6,7 @@
 -- // OPERACION:		LIBERACION / CARGA INICIAL
 -- ////////////////////////////////////////////////////////////// 
 
-USE [PYF18_Finanzas_V9999_R0]
+USE [LIQ19_Liquidaciones_V9999_R0]
 GO
 
 

@@ -2,14 +2,14 @@
 -- // ARCHIVO:			
 -- //////////////////////////////////////////////////////////////
 -- // BASE DE DATOS:	LIQ19_Liquidaciones
--- // MODULO:			PRODUCTO / DETALLE_LIQUIDACION 
--- // OPERACION:		LIBERACION / TABLAS
+-- // MODULO:			DETALLE_PORTATIL 
+-- // OPERACION:		LIBERACION / TABLAS 
 -- ////////////////////////////////////////////////////////////// 
 -- // AUTOR:		JESUS ARCINIEGA
--- // FECHA:		22/ENE/2019
+-- // FECHA:		31/ENE/2019
 -- ////////////////////////////////////////////////////////////// 
 
-USE [LIQ19_Liquidaciones_V0000_R0]  
+USE [LIQ19_Liquidaciones_V9999_R0] 
 GO
 
 -- //////////////////////////////////////////////////////////////
@@ -22,52 +22,43 @@ GO
 -- // DROPs
 -- //////////////////////////////////////////////////////////////
 
-IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[DETALLE_LIQUIDACION]') AND type in (N'U'))
-	DROP TABLE [dbo].[DETALLE_LIQUIDACION]
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[DETALLE_PORTATIL]') AND type in (N'U'))
+	DROP TABLE [dbo].[DETALLE_PORTATIL]
 GO
 
 
 
+
+
 -- //////////////////////////////////////////////////////////////
--- // DETALLE_LIQUIDACION
+-- // DETALLE_PORTATIL
 -- //////////////////////////////////////////////////////////////
 
-CREATE TABLE [dbo].[DETALLE_LIQUIDACION] (
-	[K_DETALLE_LIQUIDACION]				[INT]			NOT NULL,
-	[D_DETALLE_LIQUIDACION]				[VARCHAR](100)	NOT NULL,
-	[S_DETALLE_LIQUIDACION]				[VARCHAR](10)	NOT NULL,
-	[O_DETALLE_LIQUIDACION]				[INT]			NOT NULL,
+CREATE TABLE [dbo].[DETALLE_PORTATIL] (
+	[K_DETALLE_PORTATIL]				[INT]			NOT NULL,
 	-- ============================	
-	[K_LIQUIDACION]						[INT]			NOT NULL,
+	[K_PUNTO_VENTA]						[INT]			NOT NULL,
 	-- ============================		
-	[TOTAL_CREDITO]						[DECIMAL](19,4)		NOT NULL,
-	[TOTAL_VALE_GAS]					[DECIMAL](19,4)		NOT NULL,
-	[TOTAL_EFECTIVO]					[DECIMAL](19,4)		NOT NULL
+	[MATRICULA]							[VARCHAR](100)	NOT NULL,
+	[MARCA]								[VARCHAR](100)	NOT NULL,
+	[MODELO]							[VARCHAR](100)	NOT NULL,
+	[KILOMETRAJE]						[DECIMAL](19,4)	NOT NULL,
+	[SERIE]								[VARCHAR](100)	NOT NULL,
+	[CAPACIDAD]							[INT]			NOT NULL,
 ) ON [PRIMARY]
 GO
 
 -- //////////////////////////////////////////////////////
 
-ALTER TABLE [dbo].[DETALLE_LIQUIDACION]
-	ADD CONSTRAINT [PK_DETALLE_LIQUIDACION]
-		PRIMARY KEY CLUSTERED ([K_DETALLE_LIQUIDACION])
+ALTER TABLE [dbo].[DETALLE_PORTATIL]
+	ADD CONSTRAINT [PK_DETALLE_PORTATIL]
+		PRIMARY KEY CLUSTERED ([K_DETALLE_PORTATIL])
 GO
-
--- //////////////////////////////////////////////////////////////
-
-
-ALTER TABLE [dbo].[DETALLE_LIQUIDACION] ADD 
-	CONSTRAINT [FK_LIQUIDACION_01]  
-		FOREIGN KEY ([K_LIQUIDACION]) 
-		REFERENCES [dbo].[LIQUIDACION] ([K_LIQUIDACION])
-GO
-
-
 
 -- //////////////////////////////////////////////////////
 
 
-ALTER TABLE [dbo].[DETALLE_LIQUIDACION] 
+ALTER TABLE [dbo].[DETALLE_PORTATIL] 
 	ADD		[K_USUARIO_ALTA]				[INT]		NOT NULL,
 			[F_ALTA]						[DATETIME]	NOT NULL,
 			[K_USUARIO_CAMBIO]				[INT]		NOT NULL,
@@ -78,14 +69,14 @@ ALTER TABLE [dbo].[DETALLE_LIQUIDACION]
 GO
 
 
-ALTER TABLE [dbo].[DETALLE_LIQUIDACION] ADD 
-	CONSTRAINT [FK_DETALLE_LIQUIDACION_USUARIO_ALTA]  
+ALTER TABLE [dbo].[DETALLE_PORTATIL] ADD 
+	CONSTRAINT [FK_DETALLE_PORTATIL_USUARIO_ALTA]  
 		FOREIGN KEY ([K_USUARIO_ALTA]) 
 		REFERENCES [dbo].[USUARIO] ([K_USUARIO]),
-	CONSTRAINT [FK_DETALLE_LIQUIDACION_USUARIO_CAMBIO]  
+	CONSTRAINT [FK_DETALLE_PORTATIL_USUARIO_CAMBIO]  
 		FOREIGN KEY ([K_USUARIO_CAMBIO]) 
 		REFERENCES [dbo].[USUARIO] ([K_USUARIO]),
-	CONSTRAINT [FK_DETALLE_LIQUIDACION_USUARIO_BAJA]  
+	CONSTRAINT [FK_DETALLE_PORTATIL_USUARIO_BAJA]  
 		FOREIGN KEY ([K_USUARIO_BAJA]) 
 		REFERENCES [dbo].[USUARIO] ([K_USUARIO])
 GO

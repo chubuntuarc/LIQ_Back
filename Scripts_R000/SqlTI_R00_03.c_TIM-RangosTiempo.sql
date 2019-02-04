@@ -6,7 +6,7 @@
 -- // OPERACION:		LIBERACION    
 -- //////////////////////////////////////////////////////////////
 
-USE [TRA19_Transportadora_V9999_R0]
+USE [LIQ19_Liquidaciones_V9999_R0]
 GO
 
 -- //////////////////////////////////////////////////////////////
@@ -115,7 +115,8 @@ EXECUTE [dbo].[PG_CI_TIEMPO_RANGO]	0, 0,  3, '2 SEMANAS',	'2SE', 14, ''
 EXECUTE [dbo].[PG_CI_TIEMPO_RANGO]	0, 0,  4, '1 MES',		'1ME', 30, ''
 EXECUTE [dbo].[PG_CI_TIEMPO_RANGO]	0, 0,  5, '2 MESES',	'2ME', 61, ''
 GO
-
+
+
 -- ===============================================
 SET NOCOUNT OFF
 -- ===============================================
@@ -184,7 +185,7 @@ EXECUTE [dbo].[PG_CI_TIEMPO_DIA_SEMANA]		0, 0,  2, 'Martes',		'MAR', 20, ''
 EXECUTE [dbo].[PG_CI_TIEMPO_DIA_SEMANA]		0, 0,  3, 'Miercoles',		'MIE', 30, ''
 EXECUTE [dbo].[PG_CI_TIEMPO_DIA_SEMANA]		0, 0,  4, 'Jueves',		'JUE', 40, ''
 EXECUTE [dbo].[PG_CI_TIEMPO_DIA_SEMANA]		0, 0,  5, 'Viernes',		'VIE', 50, ''
-EXECUTE [dbo].[PG_CI_TIEMPO_DIA_SEMANA]		0, 0,  6, 'Sábado',		'SAB', 60, ''
+EXECUTE [dbo].[PG_CI_TIEMPO_DIA_SEMANA]		0, 0,  6, 'Sï¿½bado',		'SAB', 60, ''
 EXECUTE [dbo].[PG_CI_TIEMPO_DIA_SEMANA]		0, 0,  7, 'Domingo',		'DOM', 70, ''
 GO
 
@@ -252,7 +253,8 @@ EXECUTE [dbo].[PG_CI_TIEMPO_QUINCENA]  0, 0, 0, 'N/A - Quincena ',	'QUI.0', 99, 
 EXECUTE [dbo].[PG_CI_TIEMPO_QUINCENA]  0, 0, 1, 'Quincena 1',		'QUI.1', 10, ''
 EXECUTE [dbo].[PG_CI_TIEMPO_QUINCENA]  0, 0, 2, 'Quincena 2',		'QUI.2', 20, ''
 GO
-
+
+
 -- ===============================================
 SET NOCOUNT OFF
 -- ===============================================
@@ -320,7 +322,8 @@ EXECUTE [dbo].[PG_CI_TIEMPO_BIMESTRE]	0, 0,  4, 'Jul-Ago',	'BIM.4', 40, ''
 EXECUTE [dbo].[PG_CI_TIEMPO_BIMESTRE]	0, 0,  5, 'Sep-Oct',	'BIM.5', 50, ''
 EXECUTE [dbo].[PG_CI_TIEMPO_BIMESTRE]	0, 0,  6, 'Nov-Dic',	'BIM.6', 60, ''
 GO
-
+
+
 -- ===============================================
 SET NOCOUNT OFF
 -- ===============================================
@@ -388,7 +391,8 @@ EXECUTE [dbo].[PG_CI_TIEMPO_TRIMESTRE]	0, 0,  2, 'Abr-May-Jun',	'TRI.2', 20, ''
 EXECUTE [dbo].[PG_CI_TIEMPO_TRIMESTRE]	0, 0,  3, 'Jul-Ago-Sep',	'TRI.3', 30, ''
 EXECUTE [dbo].[PG_CI_TIEMPO_TRIMESTRE]	0, 0,  4, 'Oct-Nov-Dic',	'TRI.4', 40, ''
 GO
-
+
+
 -- ===============================================
 SET NOCOUNT OFF
 -- ===============================================
@@ -455,7 +459,8 @@ EXECUTE [dbo].[PG_CI_TIEMPO_CUATRIMESTRE]	0, 0,  1, 'Ene-Feb-Mar-Abr',	'CUA.1', 
 EXECUTE [dbo].[PG_CI_TIEMPO_CUATRIMESTRE]	0, 0,  2, 'May-Jun-Jul-Ago',	'CUA.2', 20, ''
 EXECUTE [dbo].[PG_CI_TIEMPO_CUATRIMESTRE]	0, 0,  3, 'Sep-Oct-Nov-Dic',	'CUA.3', 30, ''
 GO
-
+
+
 -- ===============================================
 SET NOCOUNT OFF
 -- ===============================================
@@ -519,7 +524,8 @@ SET NOCOUNT ON
 EXECUTE [dbo].[PG_CI_TIEMPO_SEMESTRE]	0, 0, 1, 'Ene-Feb-Mar-Abr-May-Jun',	'SEM.1', 10, ''
 EXECUTE [dbo].[PG_CI_TIEMPO_SEMESTRE]	0, 0, 2, 'Jul-Ago-Sep-Oct-Nov-Dic',	'SEM.3', 20, ''
 GO
-
+
+
 -- ===============================================
 SET NOCOUNT OFF
 -- ===============================================
@@ -608,7 +614,8 @@ EXECUTE [dbo].[PG_CI_TIEMPO_MES]	0, 0, 10, 'Octubre',		'OCT', 10, '', 5, 4, 3, 2
 EXECUTE [dbo].[PG_CI_TIEMPO_MES]	0, 0, 11, 'Noviembre',		'NOV', 11, '', 6, 4, 3, 2
 EXECUTE [dbo].[PG_CI_TIEMPO_MES]	0, 0, 12, 'Diciembre',		'DIC', 12, '', 6, 4, 3, 2
 GO
-
+
+
 -- ===============================================
 SET NOCOUNT OFF
 -- ===============================================

@@ -6,7 +6,7 @@
 -- // OPERACION:		LIBERACION // STORED PROCEDURE
 -- ////////////////////////////////////////////////////////////// 
 
-USE [TRA19_Transportadora_V9999_R0] 
+USE [LIQ19_Liquidaciones_V9999_R0] 
 GO
 
 -- //////////////////////////////////////////////////////////////
@@ -273,8 +273,8 @@ AS
 	SET @VP_TEXTO = REPLACE(@VP_TEXTO,'.','')
 	SET @VP_TEXTO = REPLACE(@VP_TEXTO,',','')
 	SET @VP_TEXTO = REPLACE(@VP_TEXTO,'$','')
-	SET @VP_TEXTO = REPLACE(@VP_TEXTO,'¢','')
-	SET @VP_TEXTO = REPLACE(@VP_TEXTO,'€','')
+	SET @VP_TEXTO = REPLACE(@VP_TEXTO,'ï¿½','')
+	SET @VP_TEXTO = REPLACE(@VP_TEXTO,'ï¿½','')
 
 	-- =============================================
 
@@ -286,7 +286,7 @@ AS
 
 	IF LEN(@VP_TEXTO)=1
 		BEGIN
-		IF 0 = CHARINDEX ( @VP_TEXTO , '+-.$¢€' )
+		IF 0 = CHARINDEX ( @VP_TEXTO , '+-.$ï¿½ï¿½' )
 			IF ISNUMERIC(@VP_TEXTO)=1 
 				SET @VP_K_ELEMENTO_TEMPORAL = CONVERT(INT, FLOOR( LEFT(@VP_TEXTO,9) ))
 		END

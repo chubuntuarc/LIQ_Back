@@ -6,7 +6,7 @@
 -- // OPERACION:		LIBERACION / 
 -- ////////////////////////////////////////////////////////////// 
 
-USE [TRA19_Transportadora_V9999_R0] 
+USE [LIQ19_Liquidaciones_V9999_R0] 
 GO
 
 -- //////////////////////////////////////////////////////////////
@@ -126,7 +126,7 @@ AS
 
 	IF @VP_RESULTADO=''
 		IF @VP_N_ACCESO_X_USUARIO=0 AND @VP_N_ACCESO_X_PERFIL=0
-			SET @VP_RESULTADO =  'No tiene autorización para realizar esta operación.' 								
+			SET @VP_RESULTADO =  'No tiene autorizaciï¿½n para realizar esta operaciï¿½n.' 								
 											
 	-- ///////////////////////////////////////////
 

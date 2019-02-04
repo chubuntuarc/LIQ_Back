@@ -6,7 +6,7 @@
 -- // OPERACION:		LIBERACION / TABLAS 
 -- ////////////////////////////////////////////////////////////// 
 
-USE [PYF18_Finanzas_V9999_R0]
+USE [LIQ19_Liquidaciones_V9999_R0]
 GO
 
 -- //////////////////////////////////////////////////////////////
@@ -216,7 +216,8 @@ EXECUTE [dbo].[PG_CI_TIPO_RAZON_SOCIAL] 0,0,0,  05, 'PERSONAS',			'FIS', 5, '', 
 EXECUTE [dbo].[PG_CI_TIPO_RAZON_SOCIAL] 0,0,0,  06, 'AEROS',			'AER', 6, '', 1, 1
 EXECUTE [dbo].[PG_CI_TIPO_RAZON_SOCIAL] 0,0,0,  08, 'OPERATIVAS',		'OPE', 7, '', 1, 1
 EXECUTE [dbo].[PG_CI_TIPO_RAZON_SOCIAL] 0,0,0,  99, 'VARIOS',			'VAR', 8, '', 1, 2
-GO
+GO
+
 
 -- ===============================================
 SET NOCOUNT OFF

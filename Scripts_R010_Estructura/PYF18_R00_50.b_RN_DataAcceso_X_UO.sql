@@ -5,10 +5,10 @@
 -- // MODULO:			DATA_ACCESO_UO
 -- // OPERACION:		LIBERACION / REGLAS NEGOCIO
 -- // Autor:			Alex de la Rosa
--- // Fecha creación:	04/09/18
+-- // Fecha creaciï¿½n:	04/09/18
 -- ////////////////////////////////////////////////////////////// 
 
-USE [PYF18_Finanzas_V9999_R0] 
+USE [LIQ19_Liquidaciones_V9999_R0] 
 GO
 
 -- //////////////////////////////////////////////////////////////
@@ -98,7 +98,7 @@ AS
 										WHERE	K_USUARIO=@PP_K_USUARIO
 										AND		K_UNIDAD_OPERATIVA=@PP_K_UNIDAD_OPERATIVA
 			IF @VP_EXISTE_CLAVE > 0
-				SET	@VP_RESULTADO = @VP_RESULTADO +CHAR(13)+CHAR(10) + 'La relación ya existe'
+				SET	@VP_RESULTADO = @VP_RESULTADO +CHAR(13)+CHAR(10) + 'La relaciï¿½n ya existe'
 		END	
 		
 	-- ///////////////////////////////////////////

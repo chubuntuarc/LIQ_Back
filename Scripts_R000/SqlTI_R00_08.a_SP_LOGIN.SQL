@@ -6,7 +6,7 @@
 -- // OPERACION:		LIBERACION / 
 -- ////////////////////////////////////////////////////////////// 
 
-USE [TRA19_Transportadora_V9999_R0] 
+USE [LIQ19_Liquidaciones_V9999_R0] 
 GO
 
 -- //////////////////////////////////////////////////////////////
@@ -68,7 +68,7 @@ AS
 		IF @VP_LOGIN <> '' AND @VP_PASS <>''
 			SET @VP_EXITO = 1
 		ELSE
-			SET @VP_MENSAJE = 'Usuario y/o contraseña invalidos.'
+			SET @VP_MENSAJE = 'Usuario y/o contraseï¿½a invalidos.'
 			
 	END
 	IF @VP_MENSAJE <> ''
@@ -170,7 +170,7 @@ AS
 		IF @VP_LOGIN <> '' AND @VP_PASS <>''
 			SET @VP_EXITO = 1
 		ELSE
-			SET @VP_MENSAJE = 'Usuario y/o contraseña invalidos.'
+			SET @VP_MENSAJE = 'Usuario y/o contraseï¿½a invalidos.'
 			
 	END
 	IF @VP_MENSAJE <> ''

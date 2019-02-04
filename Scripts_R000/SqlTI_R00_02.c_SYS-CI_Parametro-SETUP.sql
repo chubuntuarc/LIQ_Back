@@ -9,7 +9,7 @@
 -- // AGREGAR @AMBIENTE EN GET DE VALOR/PARAMETROS >>>> TIENE IMPACTOS EN OTROS SPS
 -- ////////////////////////////////////////////////////////////// 
 
-USE [TRA19_Transportadora_V9999_R0] 
+USE [LIQ19_Liquidaciones_V9999_R0] 
 GO
 
 -- //////////////////////////////////////////////////////////////
@@ -293,11 +293,11 @@ GO
 /****************************************************************/
 
 EXECUTE [dbo].[PG_CF_PARAMETRO]			0, 0,
-										102, 'VIGENCIA CONTRASEÑA',	'PWD', 10, 'PARAMETRO = @PP_DIAS_VIGENCIA', 1 
+										102, 'VIGENCIA CONTRASEï¿½A',	'PWD', 10, 'PARAMETRO = @PP_DIAS_VIGENCIA', 1 
 GO
 
 EXECUTE [dbo].[PG_CF_VALOR_PARAMETRO]	0, 0, 0,
-										1020, 'VIGENCIA CONTRASEÑA', '(PP_DIAS_VIGENCIA=ENTERO_1)',
+										1020, 'VIGENCIA CONTRASEï¿½A', '(PP_DIAS_VIGENCIA=ENTERO_1)',
 										0, 102, 
 										'TXT_1', 'TXT_2', 'TXT_3', 
 										90, -1, -1, 
@@ -322,7 +322,7 @@ AS
 	EXECUTE [dbo].[PG_SK_SISTEMA_VALIDAR_GET]	@PP_L_DEBUG, @PP_K_SISTEMA_EXE,
 												@OU_SISTEMA_OK = @VP_SISTEMA_OK		OUTPUT
 	-- ======================
-	-- EXECUTE PG_CF_PARAMETRO 102, 'VIGENCIA CONTRASEÑA',	'PWD', 10, 'PARAMETRO = @PP_DIAS_VIGENCIA', 1 
+	-- EXECUTE PG_CF_PARAMETRO 102, 'VIGENCIA CONTRASEï¿½A',	'PWD', 10, 'PARAMETRO = @PP_DIAS_VIGENCIA', 1 
 
 	DECLARE @VP_INT_DIAS_VIGENCIA		INT		
 	
@@ -346,11 +346,11 @@ GO
 /****************************************************************/
 
 EXECUTE [dbo].[PG_CF_PARAMETRO]			0, 0,
-										103, 'DEFAULT CONTRASEÑA',	'PWD', 10, 'PARAMETRO = @PP_DEFAULT_PASSWORD', 1 
+										103, 'DEFAULT CONTRASEï¿½A',	'PWD', 10, 'PARAMETRO = @PP_DEFAULT_PASSWORD', 1 
 GO
 
 EXECUTE [dbo].[PG_CF_VALOR_PARAMETRO]	0, 0, 0,
-										1030, 'DEFAULT CONTRASEÑA', '',
+										1030, 'DEFAULT CONTRASEï¿½A', '',
 										0, 103, 
 										'123456', 'TXT_2', 'TXT_3', 
 										-1, -1, -1, 
@@ -376,7 +376,7 @@ AS
 	EXECUTE [dbo].[PG_SK_SISTEMA_VALIDAR_GET]	@PP_L_DEBUG, @PP_K_SISTEMA_EXE,
 												@OU_SISTEMA_OK = @VP_SISTEMA_OK		OUTPUT
 	-- ======================
-	-- EXECUTE PG_CF_PARAMETRO 103, 'DEFAULT CONTRASEÑA','PWD', 10, 'PARAMETRO = @PP_DEFAULT_PASSWORD', 1 
+	-- EXECUTE PG_CF_PARAMETRO 103, 'DEFAULT CONTRASEï¿½A','PWD', 10, 'PARAMETRO = @PP_DEFAULT_PASSWORD', 1 
 
 	DECLARE @VP_DEFAULT_PASSWORD		VARCHAR(100)		
 	

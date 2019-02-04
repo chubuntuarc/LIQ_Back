@@ -6,7 +6,7 @@
 -- // OPERACION:		LIBERACION / REGLAS NEGOCIO
 -- ////////////////////////////////////////////////////////////// 
 
-USE [PYF18_Finanzas_V9999_R0] 
+USE [LIQ19_Liquidaciones_V9999_R0] 
 GO
 
 -- //////////////////////////////////////////////////////////////
@@ -103,7 +103,7 @@ AS
 										WHERE D_ZONA_UO =	@PP_D_ZONA_UO
 										AND K_ZONA_UO <>@PP_K_ZONA_UO
 			IF @VP_EXISTE_DESC > 0
-				SET	@VP_RESULTADO = @VP_RESULTADO +CHAR(13)+CHAR(10) + 'La descripción ya existe'
+				SET	@VP_RESULTADO = @VP_RESULTADO +CHAR(13)+CHAR(10) + 'La descripciï¿½n ya existe'
 		END	
 		
 	-- ///////////////////////////////////////////

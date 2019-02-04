@@ -6,7 +6,7 @@
 -- // OPERACION:		LIBERACION / STORED PROCEDURE
 -- //////////////////////////////////////////////////////////////
 
-USE [PYF18_Finanzas_V9999_R0]
+USE [LIQ19_Liquidaciones_V9999_R0]
 GO
 
 -- //////////////////////////////////////////////////////////////
@@ -261,7 +261,7 @@ AS
 	IF @VP_MENSAJE<>''
 		BEGIN
 		
-		SET		@VP_MENSAJE = 'No es posible [Crear] la [Razón Social]: ' + @VP_MENSAJE 
+		SET		@VP_MENSAJE = 'No es posible [Crear] la [Razï¿½n Social]: ' + @VP_MENSAJE 
 		SET		@VP_MENSAJE = @VP_MENSAJE + ' ( '
 		SET		@VP_MENSAJE = @VP_MENSAJE + '[#RZS.'+CONVERT(VARCHAR(10),@VP_K_RAZON_SOCIAL)+']'
 		SET		@VP_MENSAJE = @VP_MENSAJE + ' )'
@@ -365,7 +365,7 @@ AS
 	IF @VP_MENSAJE<>''
 		BEGIN
 		
-		SET		@VP_MENSAJE = 'No es posible [Actualizar] la [Razón Social]: ' + @VP_MENSAJE 
+		SET		@VP_MENSAJE = 'No es posible [Actualizar] la [Razï¿½n Social]: ' + @VP_MENSAJE 
 		SET		@VP_MENSAJE = @VP_MENSAJE + ' ( '
 		SET		@VP_MENSAJE = @VP_MENSAJE + '[#RZS.'+CONVERT(VARCHAR(10),@PP_K_RAZON_SOCIAL)+']'
 		SET		@VP_MENSAJE = @VP_MENSAJE + ' )'
@@ -431,7 +431,7 @@ AS
 	IF @VP_MENSAJE<>''
 		BEGIN
 		
-		SET		@VP_MENSAJE = 'No es posible [Borrar] la [Razón Social]: ' + @VP_MENSAJE 
+		SET		@VP_MENSAJE = 'No es posible [Borrar] la [Razï¿½n Social]: ' + @VP_MENSAJE 
 		SET		@VP_MENSAJE = @VP_MENSAJE + ' ( '
 		SET		@VP_MENSAJE = @VP_MENSAJE + '[#RZS.'+CONVERT(VARCHAR(10),@PP_K_RAZON_SOCIAL)+']'
 		SET		@VP_MENSAJE = @VP_MENSAJE + ' )'

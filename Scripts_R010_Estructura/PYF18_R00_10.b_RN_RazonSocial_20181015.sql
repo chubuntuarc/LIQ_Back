@@ -6,7 +6,7 @@
 -- // OPERACION:		LIBERACION / REGLAS NEGOCIO
 -- //////////////////////////////////////////////////////////////
 
-USE [PYF18_Finanzas_V9999_R0]
+USE [LIQ19_Liquidaciones_V9999_R0]
 GO
 
 -- //////////////////////////////////////////////////////////////
@@ -60,7 +60,7 @@ AS
 
 		IF @VP_RESULTADO=''
 			IF @VP_N_EMPRESA_X_D_EMPRESA>0
-				SET @VP_RESULTADO =  'Ya existen [Razones Sociales] con esa [Descripción('+@PP_D_RAZON_SOCIAL+')].' 
+				SET @VP_RESULTADO =  'Ya existen [Razones Sociales] con esa [Descripciï¿½n('+@PP_D_RAZON_SOCIAL+')].' 
 		END	
 		
 	-- ///////////////////////////////////////////
@@ -131,7 +131,7 @@ AS
 
 	IF @VP_RESULTADO=''
 		IF @VP_N_UNIDAD_OPERATIVA_X_RAZON_SOCIAL>0
-			SET @VP_RESULTADO =  'Existen [Sucursales] asignadas a esta Razón Social.' 
+			SET @VP_RESULTADO =  'Existen [Sucursales] asignadas a esta Razï¿½n Social.' 
 			
 	-- /////////////////////////////////////////////////////
 	
@@ -178,13 +178,13 @@ AS
 
 	IF @VP_RESULTADO=''
 		IF ( @VP_K_RAZON_SOCIAL IS NULL )
-			SET @VP_RESULTADO =  'La [Razón Social] no existe.' 
+			SET @VP_RESULTADO =  'La [Razï¿½n Social] no existe.' 
 	
 	-- ===========================
 
 	IF @VP_RESULTADO=''
 		IF @VP_L_BORRADO=1
-			SET @VP_RESULTADO =  'La [Razón Social] fue dada de baja.' 
+			SET @VP_RESULTADO =  'La [Razï¿½n Social] fue dada de baja.' 
 					
 	-- /////////////////////////////////////////////////////
 	

@@ -6,10 +6,10 @@
 -- // OPERACION:		LIBERACION / TABLA + STORED PROCEDURE
 -- //////////////////////////////////////////////////////////////
 -- // Autor:			HECTOR A. GONZALEZ 
--- // Fecha creación:	26/NOV/2018
+-- // Fecha creaciï¿½n:	26/NOV/2018
 -- ////////////////////////////////////////////////////////////// 
 
-USE [TRA19_Transportadora_V9999_R0] 
+USE [LIQ19_Liquidaciones_V9999_R0] 
 GO
 
 
