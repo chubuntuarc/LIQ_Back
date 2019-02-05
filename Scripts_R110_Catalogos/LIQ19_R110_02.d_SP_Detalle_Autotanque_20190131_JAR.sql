@@ -271,8 +271,7 @@ CREATE PROCEDURE [dbo].[PG_UP_DETALLE_AUTOTANQUE]
 	@PP_L_DEBUG					INT,
 	@PP_K_SISTEMA_EXE			INT,
 	@PP_K_USUARIO_ACCION		INT,
-	-- ===========================			
-	@PP_K_DETALLE_AUTOTANQUE	INT,
+	-- ===========================	
 	@PP_K_PUNTO_VENTA			INT,
 	-- ============================		
 	@PP_LECTURA_INICIAL			INT,
@@ -285,20 +284,19 @@ CREATE PROCEDURE [dbo].[PG_UP_DETALLE_AUTOTANQUE]
 	@PP_CAPACIDAD				INT,
 	@PP_PORCENTAJE				VARCHAR(100),
 	@PP_MEDIDOR					VARCHAR(100),
-	@PP_TIPO_MEDIDOR			VARCHAR(100)
-	-- ============================		
+	@PP_TIPO_MEDIDOR			VARCHAR(100)	
 AS			
 
-	DECLARE @VP_MENSAJE		VARCHAR(300)
+	DECLARE @VP_MENSAJE					VARCHAR(300)
 	
 	SET		@VP_MENSAJE		= ''
 
 	-- // SECCION#1 /////////////////////////////////////////////////////////// VALIDACIONES + REGLAS DE NEGOCIO 	
 
-	IF @VP_MENSAJE=''
-		EXECUTE [dbo].[PG_RN_DETALLE_AUTOTANQUE_UPDATE]	@PP_L_DEBUG, @PP_K_SISTEMA_EXE, @PP_K_USUARIO_ACCION,
-														@PP_K_DETALLE_AUTOTANQUE,
-														@OU_RESULTADO_VALIDACION = @VP_MENSAJE		OUTPUT
+	--IF @VP_MENSAJE=''
+	--	EXECUTE [dbo].[PG_RN_DETALLE_AUTOTANQUE_UPDATE]	@PP_L_DEBUG, @PP_K_SISTEMA_EXE, @PP_K_USUARIO_ACCION,
+	--													@VP_K_DETALLE_AUTOTANQUE,
+	--													@OU_RESULTADO_VALIDACION = @VP_MENSAJE		OUTPUT
 
 	-- // SECCION#2 ////////////////////////////////////////////////////////// ACCION A REALIZAR
 	
@@ -323,7 +321,7 @@ AS
 				-- ===========================
 			    [F_CAMBIO]				= GETDATE(), 
 				[K_USUARIO_CAMBIO]		= @PP_K_USUARIO_ACCION
-		WHERE	K_DETALLE_AUTOTANQUE=@PP_K_DETALLE_AUTOTANQUE
+		WHERE	K_PUNTO_VENTA=@PP_K_PUNTO_VENTA
 
 		END
 
@@ -339,7 +337,7 @@ AS
 
 		END
 	
-	SELECT	@VP_MENSAJE AS MENSAJE, @PP_K_DETALLE_AUTOTANQUE AS CLAVE
+	SELECT	@VP_MENSAJE AS MENSAJE, @PP_K_PUNTO_VENTA AS CLAVE
 
 	-- //////////////////////////////////////////////////////////////
 	

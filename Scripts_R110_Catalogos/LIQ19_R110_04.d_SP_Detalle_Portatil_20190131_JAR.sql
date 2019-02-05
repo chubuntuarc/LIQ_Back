@@ -261,8 +261,7 @@ CREATE PROCEDURE [dbo].[PG_UP_DETALLE_PORTATIL]
 	@PP_L_DEBUG					INT,
 	@PP_K_SISTEMA_EXE			INT,
 	@PP_K_USUARIO_ACCION		INT,
-	-- ===========================			
-	@PP_K_DETALLE_PORTATIL		INT,
+	-- ===========================		
 	@PP_K_PUNTO_VENTA			INT,
 	-- ============================		
 	@PP_MATRICULA				VARCHAR(100),
@@ -282,8 +281,8 @@ AS
 
 	--IF @VP_MENSAJE=''
 	--	EXECUTE [dbo].[PG_RN_DETALLE_PORTATIL_UPDATE]	@PP_L_DEBUG, @PP_K_SISTEMA_EXE, @PP_K_USUARIO_ACCION,
-	--												@PP_K_DETALLE_PORTATIL, 
-	--												@OU_RESULTADO_VALIDACION = @VP_MENSAJE		OUTPUT
+	--													@VP_K_DETALLE_PORTATIL, 
+	--													@OU_RESULTADO_VALIDACION = @VP_MENSAJE		OUTPUT
 
 	-- // SECCION#2 ////////////////////////////////////////////////////////// ACCION A REALIZAR
 	
@@ -303,7 +302,7 @@ AS
 				-- ===========================
 			    [F_CAMBIO]				= GETDATE(), 
 				[K_USUARIO_CAMBIO]		= @PP_K_USUARIO_ACCION
-		WHERE	K_DETALLE_PORTATIL=@PP_K_DETALLE_PORTATIL
+		WHERE	K_PUNTO_VENTA=@PP_K_PUNTO_VENTA
 
 		END
 
@@ -319,7 +318,7 @@ AS
 
 		END
 	
-	SELECT	@VP_MENSAJE AS MENSAJE, @PP_K_DETALLE_PORTATIL AS CLAVE
+	SELECT	@VP_MENSAJE AS MENSAJE, @PP_K_PUNTO_VENTA AS CLAVE
 
 	-- //////////////////////////////////////////////////////////////
 	
