@@ -199,15 +199,20 @@ GO
 
 
 -- //////////////////////////////////////////////////////////////
--- // STORED PROCEDURE ---> INSERT_PUNTO_VENTA 
+-- // STORED PROCEDURE ---> INSERT
 -- //////////////////////////////////////////////////////////////
 
 
-IF EXISTS (SELECT *FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_IN_PUNTO_VENTA_COMPLETO]') AND type in (N'P', N'PC'))
-	DROP PROCEDURE [dbo].[PG_IN_PUNTO_VENTA_COMPLETO]
+IF EXISTS (SELECT *FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_IN_PUNTO_VENTA]') AND type in (N'P', N'PC'))
+	DROP PROCEDURE [dbo].[PG_IN_PUNTO_VENTA]
 GO
 
-CREATE PROCEDURE [dbo].[PG_IN_PUNTO_VENTA_COMPLETO]
+--EXEC [dbo].[PG_IN_PUNTO_PUNTO_VENTA] 0,0,0,'Test tat','tat','',0,1,1,3
+--,1000,2000,'','FORD','2006',150.0000,'ABCDER1345627',2000,'90','LITROMETRO','GASPAR G4S'
+--,0,0,'','','','',''
+--,'','','','','',0
+
+CREATE PROCEDURE [dbo].[PG_IN_PUNTO_VENTA]
 	@PP_L_DEBUG					INT,
 	@PP_K_SISTEMA_EXE			INT,
 	@PP_K_USUARIO_ACCION		INT,
@@ -219,7 +224,34 @@ CREATE PROCEDURE [dbo].[PG_IN_PUNTO_VENTA_COMPLETO]
 	-- ===========================			
 	@PP_K_ESTATUS_PUNTO_VENTA	INT,
 	@PP_K_TIPO_PUNTO_VENTA		INT,
-	@PP_K_UNIDAD_OPERATIVA		INT
+	@PP_K_UNIDAD_OPERATIVA		INT,
+	-- ===========================	
+	@PP_LECTURA_INICIAL_AUT		INT,
+	@PP_LECTURA_FINAL_AUT		INT,
+	@PP_MATRICULA_AUT			VARCHAR(100),
+	@PP_MARCA_AUT				VARCHAR(100),
+	@PP_MODELO_AUT				VARCHAR(100),
+	@PP_KILOMETRAJE_AUT			DECIMAL(19,4),
+	@PP_SERIE_AUT				VARCHAR(100),
+	@PP_CAPACIDAD_AUT			INT,
+	@PP_PORCENTAJE_AUT			VARCHAR(100),
+	@PP_MEDIDOR_AUT				VARCHAR(100),
+	@PP_TIPO_MEDIDOR_AUT		VARCHAR(100),
+	-- ===========================	
+	@PP_LECTURA_INICIAL_EST		INT,
+	@PP_LECTURA_FINAL_EST		INT,
+	@PP_DIRECCION_EST			VARCHAR(100),
+	@PP_CAPACIDAD_EST			VARCHAR(100),
+	@PP_PORCENTAJE_EST			VARCHAR(100),
+	@PP_MEDIDOR_EST				VARCHAR(100),
+	@PP_TIPO_MEDIDOR_EST		VARCHAR(100),
+	-- ===========================	
+	@PP_MATRICULA_POR			VARCHAR(100),
+	@PP_MARCA_POR				VARCHAR(100),
+	@PP_MODELO_POR				VARCHAR(100),
+	@PP_KILOMETRAJE_POR			VARCHAR(100),
+	@PP_SERIE_POR				VARCHAR(100),
+	@PP_CAPACIDAD_POR			INT
 AS
 
 DECLARE @VP_MENSAJE		VARCHAR(300)
@@ -247,21 +279,43 @@ IF @VP_MENSAJE=''
 	-- ====================================
 
 	INSERT INTO PUNTO_VENTA
-	( [K_PUNTO_VENTA],
-	[D_PUNTO_VENTA], [S_PUNTO_VENTA], [C_PUNTO_VENTA], [O_PUNTO_VENTA],
-	-- ===========================
-	[K_ESTATUS_PUNTO_VENTA], [K_TIPO_PUNTO_VENTA], [K_UNIDAD_OPERATIVA],
-	-- ===========================
-	[K_USUARIO_ALTA], [F_ALTA], [K_USUARIO_CAMBIO], [F_CAMBIO],
-	[L_BORRADO], [K_USUARIO_BAJA], [F_BAJA] )
+			( [K_PUNTO_VENTA],
+			[D_PUNTO_VENTA], [S_PUNTO_VENTA], [C_PUNTO_VENTA], [O_PUNTO_VENTA],
+			-- ===========================
+			[K_ESTATUS_PUNTO_VENTA], [K_TIPO_PUNTO_VENTA], [K_UNIDAD_OPERATIVA],
+			-- ===========================
+			[K_USUARIO_ALTA], [F_ALTA], [K_USUARIO_CAMBIO], [F_CAMBIO],
+			[L_BORRADO], [K_USUARIO_BAJA], [F_BAJA] )
 	VALUES
-	( @VP_K_PUNTO_VENTA,
-	@PP_D_PUNTO_VENTA, @PP_S_PUNTO_VENTA, @PP_C_PUNTO_VENTA, @PP_O_PUNTO_VENTA,
-	-- ===========================
-	@PP_K_ESTATUS_PUNTO_VENTA, @PP_K_TIPO_PUNTO_VENTA, @PP_K_UNIDAD_OPERATIVA,
-	-- ===========================
-	@PP_K_USUARIO_ACCION, GETDATE(), @PP_K_USUARIO_ACCION, GETDATE(),
-	0, NULL, NULL )
+			( @VP_K_PUNTO_VENTA,
+			@PP_D_PUNTO_VENTA, @PP_S_PUNTO_VENTA, @PP_C_PUNTO_VENTA, @PP_O_PUNTO_VENTA,
+			-- ===========================
+			@PP_K_ESTATUS_PUNTO_VENTA, @PP_K_TIPO_PUNTO_VENTA, @PP_K_UNIDAD_OPERATIVA,
+			-- ===========================
+			@PP_K_USUARIO_ACCION, GETDATE(), @PP_K_USUARIO_ACCION, GETDATE(),
+			0, NULL, NULL )
+
+	-- ====================================
+
+	IF @PP_K_TIPO_PUNTO_VENTA=1
+		EXECUTE [dbo].[PG_IN_DETALLE_AUTOTANQUE]	@PP_L_DEBUG, @PP_K_SISTEMA_EXE, @PP_K_USUARIO_ACCION, @VP_K_PUNTO_VENTA,
+													@PP_LECTURA_INICIAL_AUT, @PP_LECTURA_FINAL_AUT, @PP_MATRICULA_AUT, 
+													@PP_MARCA_AUT, @PP_MODELO_AUT, @PP_KILOMETRAJE_AUT, @PP_SERIE_AUT,
+													@PP_CAPACIDAD_AUT, @PP_PORCENTAJE_AUT, @PP_MEDIDOR_AUT, @PP_TIPO_MEDIDOR_AUT	
+													
+	-- ====================================			
+	
+	IF @PP_K_TIPO_PUNTO_VENTA=2
+		EXECUTE [dbo].[PG_IN_DETALLE_ESTACION_CARBURACION]	@PP_L_DEBUG, @PP_K_SISTEMA_EXE, @PP_K_USUARIO_ACCION, @VP_K_PUNTO_VENTA,
+															@PP_LECTURA_INICIAL_EST, @PP_LECTURA_FINAL_EST, @PP_DIRECCION_EST,
+															@PP_CAPACIDAD_EST, @PP_PORCENTAJE_EST, @PP_MEDIDOR_EST, @PP_TIPO_MEDIDOR_EST	
+															
+	-- ====================================			
+	
+	IF @PP_K_TIPO_PUNTO_VENTA=3
+		EXECUTE [dbo].[PG_IN_DETALLE_PORTATIL]		@PP_L_DEBUG, @PP_K_SISTEMA_EXE, @PP_K_USUARIO_ACCION, @VP_K_PUNTO_VENTA,
+													@PP_MATRICULA_POR, @PP_MARCA_POR, @PP_MODELO_POR, @PP_KILOMETRAJE_POR,
+													@PP_SERIE_POR, @PP_CAPACIDAD_POR
 
 	-- // SECCION#3 ////////////////////////////////////////////////////////// MENSAJE DE SALIDA
 
@@ -282,69 +336,6 @@ IF @VP_MENSAJE=''
 	-- //////////////////////////////////////////////////////////////
 
 GO
-
-	
--- //////////////////////////////////////////////////////////////
--- // STORED PROCEDURE ---> INSERT
--- //////////////////////////////////////////////////////////////
-
-
-IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_IN_PUNTO_VENTA]') AND type in (N'P', N'PC'))
-	DROP PROCEDURE [dbo].[PG_IN_PUNTO_VENTA]
-GO
-
--- EXEC [dbo].[PG_IN_PUNTO_VENTA] 0,0,0,'TEST POS','TEST', '', 0, 1, 1,'JUAREZ', 0, 1000, '', 'TEST123', 'FORD', '2019', 0.0000, 'AFHSYTD1876', 8000, '90', 'LITROMETRO', 'GASPAR G4S'
-
-CREATE PROCEDURE [dbo].[PG_IN_PUNTO_VENTA]
-	@PP_L_DEBUG					INT,
-	@PP_K_SISTEMA_EXE			INT,
-	@PP_K_USUARIO_ACCION		INT,
-	-- ===========================			
-	@PP_D_PUNTO_VENTA			VARCHAR(100),
-	@PP_S_PUNTO_VENTA			VARCHAR(10),
-	@PP_C_PUNTO_VENTA			VARCHAR(255),
-	@PP_O_PUNTO_VENTA			INT,
-	-- ===========================			
-	@PP_K_ESTATUS_PUNTO_VENTA	INT,
-	@PP_K_TIPO_PUNTO_VENTA		INT,
-	@PP_K_UNIDAD_OPERATIVA		INT,
-	-- ============================		
-	@PP_LECTURA_INICIAL			INT,
-	@PP_LECTURA_FINAL			INT,
-	@PP_DIRECCION				VARCHAR(100),
-	@PP_MATRICULA				VARCHAR(100),
-	@PP_MARCA 					VARCHAR(100),
-	@PP_MODELO					VARCHAR(100),
-	@PP_KILOMETRAJE				DECIMAL(19,4),
-	@PP_SERIE					VARCHAR(100),
-	@PP_CAPACIDAD				INT,
-	@PP_PORCENTAJE				VARCHAR(100),
-	@PP_MEDIDOR					VARCHAR(100),
-	@PP_TIPO_MEDIDOR			VARCHAR(100)
-	-- ============================		
-AS			
-
-	DECLARE @VP_MENSAJE		VARCHAR(300)
-	
-	SET		@VP_MENSAJE		= ''
-	
-	-- // SECCION#1 /////////////////////////////////////////////////////////// VALIDACIONES + REGLAS DE NEGOCIO 	
-	-- // NO ES REQUERIDA LA SECCION #1
-
-	-- // SECCION#2 ////////////////////////////////////////////////////////// ACCION A REALIZAR
-
-		EXECUTE [dbo].[PG_IN_PUNTO_VENTA_COMPLETO]	@PP_L_DEBUG, @PP_K_SISTEMA_EXE, @PP_K_USUARIO_ACCION,
-													@PP_D_PUNTO_VENTA, @PP_S_PUNTO_VENTA, @PP_C_PUNTO_VENTA, @PP_O_PUNTO_VENTA,
-													@PP_K_ESTATUS_PUNTO_VENTA, @PP_K_TIPO_PUNTO_VENTA, @PP_K_UNIDAD_OPERATIVA      --//SE HACE EL INSERT EN LA TABLA PUNTO_VENTA
-		-- ====================================
-
-	-- // SECCION#3 ////////////////////////////////////////////////////////// MENSAJE DE SALIDA
-	-- // NO ES REQUERIDA LA SECCION #3
-
-	-- //////////////////////////////////////////////////////////////
-
-GO
-
 
 
 -- //////////////////////////////////////////////////////////////

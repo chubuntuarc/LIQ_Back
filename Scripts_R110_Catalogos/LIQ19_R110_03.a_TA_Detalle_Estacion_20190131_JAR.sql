@@ -56,16 +56,6 @@ ALTER TABLE [dbo].[DETALLE_ESTACION_CARBURACION]
 		PRIMARY KEY CLUSTERED ([K_DETALLE_ESTACION_CARBURACION])
 GO
 
--- //////////////////////////////////////////////////////////////
-
-
-ALTER TABLE [dbo].[DETALLE_ESTACION_CARBURACION] ADD 
-	CONSTRAINT [FK_DETALLE_ESTACION_CARBURACION_01]  
-		FOREIGN KEY ([K_PUNTO_VENTA]) 
-		REFERENCES [dbo].[PUNTO_VENTA] ([K_PUNTO_VENTA])
-GO
-
-
 -- //////////////////////////////////////////////////////
 
 

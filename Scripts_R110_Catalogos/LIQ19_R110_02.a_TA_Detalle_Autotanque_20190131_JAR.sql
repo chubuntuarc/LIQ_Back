@@ -60,16 +60,6 @@ ALTER TABLE [dbo].[DETALLE_AUTOTANQUE]
 		PRIMARY KEY CLUSTERED ([K_DETALLE_AUTOTANQUE])
 GO
 
--- //////////////////////////////////////////////////////////////
-
-
-ALTER TABLE [dbo].[DETALLE_AUTOTANQUE] ADD 
-	CONSTRAINT [FK_DETALLE_AUTOTANQUE_01]  
-		FOREIGN KEY ([K_PUNTO_VENTA]) 
-		REFERENCES [dbo].[PUNTO_VENTA] ([K_PUNTO_VENTA])
-GO
-
-
 -- //////////////////////////////////////////////////////
 
 
