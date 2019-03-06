@@ -24,7 +24,7 @@ IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_LI_
 	DROP PROCEDURE [dbo].[PG_LI_PRODUCTO]
 GO
 
--- EXEC [dbo].[PG_LI_PRODUCTO] 0,0,0,'',-1,-1,1
+-- EXEC [dbo].[PG_LI_PRODUCTO] 0,0,0,'',-1,-1,-1
 
 CREATE PROCEDURE [dbo].[PG_LI_PRODUCTO]
 	@PP_L_DEBUG						INT,

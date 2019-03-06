@@ -121,11 +121,11 @@ WHILE @@FETCH_STATUS = 0
 		SET @VP_IN_PROCESAR_ARCHIVO = 0
 
 		-- ========================================
-
-		IF LEFT(@VP_STR_ARCHIVO_SQL,5)='LIQ19' 
+		
+		IF LEFT(@VP_STR_ARCHIVO_SQL,5)='SqlTI' 
 			SET @VP_IN_PROCESAR_ARCHIVO = 1
 
-		IF LEFT(@VP_STR_ARCHIVO_SQL,5)='SqlTI' 
+		IF LEFT(@VP_STR_ARCHIVO_SQL,5)='LIQ19' 
 			SET @VP_IN_PROCESAR_ARCHIVO = 1
 
 		-- ========================================
