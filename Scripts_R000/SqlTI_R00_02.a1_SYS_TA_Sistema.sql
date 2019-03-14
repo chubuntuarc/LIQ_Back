@@ -127,7 +127,7 @@ EXECUTE [dbo].[PG_CI_SISTEMA]  0, 'DEFAULT','DEFAULT','DEFAULT',0, 1, 0, '2018-0
 EXECUTE [dbo].[PG_CI_SISTEMA] 10, 'ICS', 'ICS','ICS', 0, 1, 0, '2018-04-02', 0, '2018-04-02', 0
 EXECUTE [dbo].[PG_CI_SISTEMA] 20, 'ERM', 'ERM','ERM', 0, 1, 0, '2018-04-02', 0, '2018-04-02', 0
 EXECUTE [dbo].[PG_CI_SISTEMA]  1001, 'prema','Pprema','prema',0, 1, 0, '2018-04-02', 0, '2018-04-02', 0
-EXECUTE [dbo].[PG_CI_SISTEMA]  40, 'PPT0','PRESUPUESTOS','Presupuestos',0, 1, 0, '2018-08-06', 0, '2018-08-06', 0
+EXECUTE [dbo].[PG_CI_SISTEMA]  2005, 'LIQ19','LIQUIDACIONES','Liquidaciones',0, 1, 0, '2019-03-12', 0, '2019-03-12', 0
 
 
 
