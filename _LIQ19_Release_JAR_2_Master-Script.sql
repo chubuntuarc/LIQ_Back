@@ -3,7 +3,7 @@
 -- //////////////////////////////////////////////////////////////
 -- // SERVIDOR:			
 -- //////////////////////////////////////////////////////////////
--- // BASE DE DATOS:	LIQ19_DocMatrix
+-- // BASE DE DATOS:	LIQ19_Liquidaciones
 -- // MODULO:			CREACION DE BASE DE DATOS 
 -- //					  -INCLUYE TABLAS
 -- //					  -STORED PROCEDURES
@@ -79,6 +79,7 @@ DECLARE @VP_IN_PROCESAR_ARCHIVO			INT
 
 	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R000\')
 	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R010_Estructura\')
+	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R015_Sys_SetUp\')
 	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R100_Biogas\')
 	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R110_Catalogos\')
 
