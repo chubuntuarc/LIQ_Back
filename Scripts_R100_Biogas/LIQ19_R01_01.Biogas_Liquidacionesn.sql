@@ -50,9 +50,22 @@ CREATE TABLE [BD_Biogas_Liqsys_liquidacionesn] (
   PRIMARY KEY ([idLiquidacion],[sucursal])
 )
 
+GO
+
 -- ----------------------------
 -- Records of liquidacionesn
 -- ----------------------------
+
+-- //////////////////////////////////////////////////////////////
+-- // CARGA INICIAL
+-- //////////////////////////////////////////////////////////////
+
+-- ===============================================
+SET NOCOUNT ON
+-- ===============================================
+
+
+
 INSERT INTO [BD_Biogas_Liqsys_liquidacionesn] VALUES ('1', '0', '508', 'BIOGAS', '105', '115', '0', 'BG12', 'BG12', '2012-03-14 11:36:50', 'NO', '861007-861963', '4999.88', '4497.80', '0.00', '1', '889', '', 'B:500@2^B:200@4^B:100@5^B:50@1^B:20@25^M:10@49^M:5@120^M:2@35^M:1@200^M:0.5@60^O:OTROS@DLLS@260^', 'mhernandez', 'VALIDO', '0', '@Se modifico la LECTURA INICIAL de: 861963 a: 861007@CajeroCobro:saguirre:2012-03-14 1159');
 INSERT INTO [BD_Biogas_Liqsys_liquidacionesn] VALUES ('2', '0', '522', 'BIOGAS', '101', '2022', '0', 'BG09', 'BG09', '2012-03-14 14:30:34', 'NO', '216104-218311', '11542.61', '5626.24', '1110.00', '1', '2075', 'F:REFACCIONES@FACRUA DESPONCHADORA@1110^', 'B:200@19^B:100@11^B:20@1^M:10@59^M:5@23^M:1@2^', 'arojas', 'VALIDO', '0', '@Se modifico la LECTURA INICIAL de: 218311 a: 216104@CajeroCobro:saguirre:2012-03-14 1452');
 INSERT INTO [BD_Biogas_Liqsys_liquidacionesn] VALUES ('3', '0', '507', 'BIOGAS', '1523', '2143', '0', 'BE201', 'BE201', '2012-03-14 14:37:17', 'NO', '784952-785771', '4283.37', '4283.00', '0.00', '1', '753', '', 'B:500@3^B:200@9^B:100@5^B:50@6^B:20@4^M:10@5^M:5@3^M:2@9^M:1@20^', 'mhernandez', 'VALIDO', '0', '@Se modifico la LECTURA INICIAL de: 785771 a: 784952@CajeroCobro:saguirre:2012-03-14 1443');
@@ -5098,3 +5111,10 @@ INSERT INTO [BD_Biogas_Liqsys_liquidacionesn] VALUES ('5043', '7', '5705', 'BIOG
 INSERT INTO [BD_Biogas_Liqsys_liquidacionesn] VALUES ('5044', '10', '5703', 'BIOGAS', '2170', '0', '0', 'BG05', 'BG05', '2012-08-07 21:39:59', 'NO', '524795-525908', '6065.85', '5965.85', '100.00', '1', '1013', 'F:DIF.TARA@JORGE ALANIS@100^', 'B:200@5^B:20@4^M:10@153^M:5@249^M:2@287^M:1@1150^M:0.5@136^O:OTROS@SERVIBONOS@330^', 'mhernandez', 'VALIDO', '0', '@CajeroCobro:saguirre:2012-08-08 0842');
 INSERT INTO [BD_Biogas_Liqsys_liquidacionesn] VALUES ('5045', '17', '5706', 'BIOGAS', '2011', '0', '0', 'BG12', 'BG12', '2012-08-07 22:08:46', 'NO', '44773-45519', '4065.70', '2452.00', '0.00', '1', '694', '', 'B:500@4^B:200@2^B:50@1^M:1@2^', 'mhernandez', 'VALIDO', '0', '@CajeroCobro:saguirre:2012-08-08 0853');
 --SET FOREIGN_KEY_CHECKS=1;
+
+GO
+
+-- ===============================================
+SET NOCOUNT OFF
+-- ===============================================
+GO

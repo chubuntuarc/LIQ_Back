@@ -38,9 +38,21 @@ CREATE TABLE [BD_Biogas_Liqsys_cortescaja] (
   PRIMARY KEY ([idCorte])
 ) 
 
+GO
+
 -- ----------------------------
 -- Records of cortescaja
 -- ----------------------------
+
+-- //////////////////////////////////////////////////////////////
+-- // CARGA INICIAL
+-- //////////////////////////////////////////////////////////////
+
+-- ===============================================
+SET NOCOUNT ON
+-- ===============================================
+
+
 INSERT INTO [BD_Biogas_Liqsys_cortescaja] VALUES ('1', '2015-09-22 14:59:06', 'BIOGAS', 'TRASLADOVALORES', '7000.00', '0131852108', '158263', 'VALIDO', '1', '2015-09-22', 'saguirre');
 INSERT INTO [BD_Biogas_Liqsys_cortescaja] VALUES ('2', '2015-09-22 15:02:05', 'BIOGAS', 'TOMACAJA', '500.00', '', 'CAMBIO DE CH', 'VALIDO', '1', '2015-09-22', 'saguirre');
 INSERT INTO [BD_Biogas_Liqsys_cortescaja] VALUES ('3', '2015-09-22 15:04:28', 'BIOGAS', 'TOMACAJA', '165.68', '', 'NOMINA', 'VALIDO', '1', '2015-09-22', 'saguirre');
@@ -20432,3 +20444,11 @@ INSERT INTO [BD_Biogas_Liqsys_cortescaja] VALUES ('20388', '2019-01-03 21:50:35'
 INSERT INTO [BD_Biogas_Liqsys_cortescaja] VALUES ('20389', '2019-01-03 22:57:10', 'BIOGAS', 'BANCO', '5833.00', '0145355370', '03012019', 'VALIDO', '2163', '2019-01-03', 'eberumen');
 INSERT INTO [BD_Biogas_Liqsys_cortescaja] VALUES ('20390', '2019-01-03 22:57:29', 'BIOGAS', 'BANCO', '8585.88', '0145355370', '03012019', 'VALIDO', '2163', '2019-01-03', 'eberumen');
 --SET FOREIGN_KEY_CHECKS=1;
+
+
+GO
+
+-- ===============================================
+SET NOCOUNT OFF
+-- ===============================================
+GO

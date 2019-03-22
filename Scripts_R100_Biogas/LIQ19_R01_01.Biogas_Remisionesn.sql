@@ -47,9 +47,22 @@ CREATE TABLE [BD_Biogas_Liqsys_remisionesn] (
   PRIMARY KEY ([idRemision])
 ) 
 
+GO
+
 -- ----------------------------
 -- Records of remisionesn
 -- ----------------------------
+
+-- //////////////////////////////////////////////////////////////
+-- // CARGA INICIAL
+-- //////////////////////////////////////////////////////////////
+
+-- ===============================================
+SET NOCOUNT ON
+-- ===============================================
+
+
+
 INSERT INTO [BD_Biogas_Liqsys_remisionesn] VALUES ('1', '1', '1', '1', '20046', 'BIO', '300584', '2012-03-14', '2012-03-14 11:36:50', 'LITRO', 'CONTADO', '45.0000', '5.230000', '0.000000', '0.000000', '235.3500', null, 'VALIDO', 'mhernandez', '0');
 INSERT INTO [BD_Biogas_Liqsys_remisionesn] VALUES ('2', '1', '1', '1', '20047', 'BIO', '300583', '2012-03-14', '2012-03-14 11:36:50', 'LITRO', 'CONTADO', '160.0000', '5.230000', '0.000000', '0.000000', '836.8000', null, 'VALIDO', 'mhernandez', '0');
 INSERT INTO [BD_Biogas_Liqsys_remisionesn] VALUES ('3', '1', '1', '20000', '-1', 'BIO', '300582', '2012-03-14', '2012-03-14 11:36:50', 'LITRO', 'CONTADO', '96.0000', '5.230000', '0.000000', '0.000000', '502.0800', null, 'VALIDO', 'mhernandez', '0');
@@ -1997,3 +2010,11 @@ INSERT INTO [BD_Biogas_Liqsys_remisionesn] VALUES ('1944', '165', '1', '77', '20
 INSERT INTO [BD_Biogas_Liqsys_remisionesn] VALUES ('1945', '165', '1', '77', '20116', 'BIO', '366687', '2012-03-19', '2012-03-19 15:22:43', 'LITRO', 'CREDITO', '746.0000', '5.230000', '0.000000', '0.000000', '3901.5800', null, 'VALIDO', 'mhernandez', '0');
 INSERT INTO [BD_Biogas_Liqsys_remisionesn] VALUES ('1946', '165', '1', '77', '20117', 'BIO', '366692', '2012-03-19', '2012-03-19 15:22:43', 'LITRO', 'CREDITO', '28.0000', '5.230000', '0.000000', '0.000000', '146.4400', null, 'VALIDO', 'mhernandez', '0');
 --SET FOREIGN_KEY_CHECKS=1;
+
+GO
+
+-- ===============================================
+SET NOCOUNT OFF
+-- ===============================================
+GO
+

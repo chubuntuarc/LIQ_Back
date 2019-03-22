@@ -39,9 +39,22 @@ CREATE TABLE [BD_Biogas_Liqsys_rutasventa] (
   PRIMARY KEY ([idRuta])
 )
 
+GO
+
+
 -- ----------------------------
 -- Records of rutasventa
 -- ----------------------------
+
+-- //////////////////////////////////////////////////////////////
+-- // CARGA INICIAL
+-- //////////////////////////////////////////////////////////////
+
+-- ===============================================
+SET NOCOUNT ON
+-- ===============================================
+
+
 INSERT INTO [BD_Biogas_Liqsys_rutasventa] VALUES ('1', 'BE201', 'AUTOTANQUE', 'PROPIA', 'BIOGAS', '0.0000', '0.0000', '0', '60', '1', '2012-10-25 16:31:32', 'robot');
 INSERT INTO [BD_Biogas_Liqsys_rutasventa] VALUES ('2', 'C133', 'PORTATIL', 'PROPIA', 'BIOGAS', '0.0000', '0.0000', '0', '60', '1', '2012-10-25 16:31:32', 'robot');
 INSERT INTO [BD_Biogas_Liqsys_rutasventa] VALUES ('3', '0', 'AUTOTANQUE', 'PROPIA', 'MARKETING', '0.0000', '0.0000', '0', '60', '1', '2012-10-25 16:31:32', 'robot');
@@ -288,3 +301,12 @@ INSERT INTO [BD_Biogas_Liqsys_rutasventa] VALUES ('243', 'ISRAYON2', 'AUTOTANQUE
 INSERT INTO [BD_Biogas_Liqsys_rutasventa] VALUES ('244', 'ISPASEO', 'AUTOTANQUE', 'PROPIA', 'BIOGAS', '0.0000', '0.0000', '', '60', '1', '2018-10-13 12:43:53', 'arojas');
 INSERT INTO [BD_Biogas_Liqsys_rutasventa] VALUES ('245', 'C301', 'PORTATIL', 'PROPIA', 'BIOGAS', '0.0000', '0.0000', '', '60', '1', '2018-12-21 11:11:50', 'arojas');
 --SET FOREIGN_KEY_CHECKS=1
+
+
+GO
+
+-- ===============================================
+SET NOCOUNT OFF
+-- ===============================================
+GO
+

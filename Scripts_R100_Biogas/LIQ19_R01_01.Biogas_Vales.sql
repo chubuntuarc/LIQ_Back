@@ -40,9 +40,22 @@ CREATE TABLE [BD_Biogas_Liqsys_vales] (
   PRIMARY KEY ([idVale])
 ) 
 
+
+GO
+
 -- ----------------------------
 -- Records of vales
 -- ----------------------------
+
+-- //////////////////////////////////////////////////////////////
+-- // CARGA INICIAL
+-- //////////////////////////////////////////////////////////////
+
+-- ===============================================
+SET NOCOUNT ON
+-- ===============================================
+
+
 INSERT INTO [BD_Biogas_Liqsys_vales] VALUES ('13', '44865', '24057', '0', '2012-10-19 10:59:13', '2012-01-01', '200.0000', '0.7500', '5.4700', 'nromero', 'N/D', 'DEBE CHEQUE', 'COBRANZA');
 INSERT INTO [BD_Biogas_Liqsys_vales] VALUES ('14', '44867', '24057', '0', '2012-10-19 10:59:56', '2012-01-01', '200.0000', '0.7500', '5.4700', 'nromero', 'N/D', 'DEBE CHEQUE', 'COBRANZA');
 INSERT INTO [BD_Biogas_Liqsys_vales] VALUES ('15', '44868', '24057', '0', '2012-10-19 10:59:56', '2012-01-01', '200.0000', '0.7500', '5.4700', 'nromero', 'N/D', 'DEBE CHEQUE', 'COBRANZA');
@@ -1997,3 +2010,12 @@ INSERT INTO [BD_Biogas_Liqsys_vales] VALUES ('1975', '16540', '24066', '681982 B
 INSERT INTO [BD_Biogas_Liqsys_vales] VALUES ('1976', '16541', '24066', '681982 BIO', '2012-11-21 17:07:29', '2012-11-26', '100.0000', '0.0000', '5.8500', 'nromero', 'ALFIN CONSULTORES', 'CHEQUE HSBC 4034506', 'APLICADO');
 INSERT INTO [BD_Biogas_Liqsys_vales] VALUES ('1977', '16542', '24066', '684221 BIO', '2012-11-21 17:07:29', '2012-11-29', '100.0000', '0.0000', '5.8500', 'nromero', 'ALFIN CONSULTORES', 'CHEQUE HSBC 4034506', 'APLICADO');
 INSERT INTO [BD_Biogas_Liqsys_vales] VALUES ('1978', '16543', '24066', '684221 BIO', '2012-11-21 17:07:29', '2012-11-29', '100.0000', '0.0000', '5.8500', 'nromero', 'ALFIN CONSULTORES', 'CHEQUE HSBC 4034506', 'APLICADO');
+
+GO
+
+-- ===============================================
+SET NOCOUNT OFF
+-- ===============================================
+GO
+
+

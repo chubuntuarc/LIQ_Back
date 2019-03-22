@@ -47,9 +47,22 @@ CREATE TABLE [BD_Biogas_Liqsys_resumenventa] (
   [saved] datetime NOT NULL DEFAULT '2010-01-01 00:00:00'
 )
 
+GO
+
 -- ----------------------------
 -- Records of resumenventa
 -- ----------------------------
+
+-- //////////////////////////////////////////////////////////////
+-- // CARGA INICIAL
+-- //////////////////////////////////////////////////////////////
+
+-- ===============================================
+SET NOCOUNT ON
+-- ===============================================
+
+
+
 INSERT INTO [BD_Biogas_Liqsys_resumenventa] VALUES ('22', 'BIOGAS', '6', 'BE01', 'SIN PERMISO', 'ESTACIONARIO', '2016-12-01', '0.54000', '0.00', '0.00', '0.00', '1272.78', '0.00', '15385.07', '1137.50', '0.00', '0.00', '0.00', '0.00', 'RICARDO RASCON', '2016-12-02 17:10:28');
 INSERT INTO [BD_Biogas_Liqsys_resumenventa] VALUES ('22', 'BIOGAS', '7', 'BE02', 'SIN PERMISO', 'ESTACIONARIO', '2016-12-01', '0.54000', '0.00', '0.00', '0.00', '438.48', '64.80', '5692.12', '0.00', '841.20', '0.00', '0.00', '0.00', 'RICARDO RASCON', '2016-12-02 17:10:28');
 INSERT INTO [BD_Biogas_Liqsys_resumenventa] VALUES ('22', 'BIOGAS', '3', 'BE03', 'SIN PERMISO', 'ESTACIONARIO', '2016-12-01', '0.54000', '0.00', '0.00', '0.00', '804.60', '0.00', '9712.78', '732.12', '0.00', '0.00', '0.00', '0.00', 'RICARDO RASCON', '2016-12-02 17:10:28');
@@ -2001,3 +2014,12 @@ INSERT INTO [BD_Biogas_Liqsys_resumenventa] VALUES ('22', 'BIOGAS', '76', 'ISVEL
 INSERT INTO [BD_Biogas_Liqsys_resumenventa] VALUES ('22', 'BIOGAS', '77', 'ISZAPA', 'SIN PERMISO', 'CARBURACION', '2016-12-29', '0.54000', '0.00', '0.00', '0.00', '1809.54', '172.80', '23490.51', '0.00', '2243.20', '0.00', '0.00', '0.00', 'rrascon', '2016-12-30 14:28:38');
 INSERT INTO [BD_Biogas_Liqsys_resumenventa] VALUES ('22', 'BIOGAS', '78', 'ISZARA', 'LP/16235/EXP/ES/2016', 'CARBURACION', '2016-12-29', '0.54000', '0.00', '15.00', '0.00', '3208.68', '196.56', '41653.42', '0.00', '2551.64', '0.00', '0.00', '0.00', 'rrascon', '2016-12-30 14:28:38');
 INSERT INTO [BD_Biogas_Liqsys_resumenventa] VALUES ('22', 'BIOGAS', '38', 'C128', 'SIN PERMISO', 'PORTATIL', '2016-12-29', '0.54000', '0.00', '0.00', '0.00', '530.00', '10.00', '6762.58', '116.82', '1298.00', '0.00', '0.00', '0.00', 'rrascon', '2016-12-30 14:28:38');
+
+
+GO
+
+-- ===============================================
+SET NOCOUNT OFF
+-- ===============================================
+GO
+

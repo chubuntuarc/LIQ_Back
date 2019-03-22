@@ -58,9 +58,22 @@ CREATE TABLE [BD_Biogas_Liqsys_unidades] (
   PRIMARY KEY ([idUnidad])
 ) 
 
+GO
+
 -- ----------------------------
 -- Records of unidades
 -- ----------------------------
+
+-- //////////////////////////////////////////////////////////////
+-- // CARGA INICIAL
+-- //////////////////////////////////////////////////////////////
+
+-- ===============================================
+SET NOCOUNT ON
+-- ===============================================
+
+
+
 INSERT INTO [BD_Biogas_Liqsys_unidades] VALUES ('48', 'BE201', '1', 'AUTOTANQUE', 'ESTACIONARIO', 'BIOGAS', '901407', '73', '8', '0', 'N/D', 'NISSAN VPM', '2008', '56309', '2011-07-14', '3NGDD14528K021599', 'MAS ALTO', 'GASPAR G4S', '1866', '50', '0.0000', '0.0000', '0.00', '0', '0', 'ACTIVA', '0', '-1', 'SIN PERMISO', '2d65acee-4ac4-4614-9e8e-98c80536018c', '0');
 INSERT INTO [BD_Biogas_Liqsys_unidades] VALUES ('26', 'C133', 'C133', 'PORTATIL', 'CILINDROS', 'BIOGAS', '0', '0', '0', '0', 'N/D', 'NISSAN', '2010', '29056', '2011-07-07', '013FB0473C4F544B', 'NINGUNO', 'NINGUNO', '0', '60', '0.0000', '0.0000', '0.00', '0', '0', 'ACTIVA', '0', '-1', 'SIN PERMISO', '0', '0');
 INSERT INTO [BD_Biogas_Liqsys_unidades] VALUES ('2', 'GUADALUPE', '0', 'AUTOTANQUE', 'N/D', 'BIOGAS', '0', '0.0000', '0.00', '0', 'N/D', 'N/D', 'N/D', '0', '2008-05-01', 'N/D', 'LITROMETRO', 'NINGUNO', '0', '0.00', '0.0000', '0.0000', '0.00', '0', '0', 'ACTIVA', '0', '-1', 'SIN PERMISO', '0', '0');
@@ -472,3 +485,11 @@ INSERT INTO [BD_Biogas_Liqsys_unidades] VALUES ('411', 'MONT 302', '0', 'ESTACIO
 INSERT INTO [BD_Biogas_Liqsys_unidades] VALUES ('412', 'ISPASEO', '244', 'ESTACION', 'ISLAS', 'BIOGAS', '447863', '0.00', '3', '0', 'N/D', 'N/D', 'N/D', 'N/D', '2018-10-13', 'N/D', 'LITROMETRO', 'GASPAR G4S', '4921', '0.00', '0.0000', '0.0000', '0.00', '0', '0', 'ACTIVA', '0', '-1', 'SIN PERMISO', '3200ff07-60ef-4d49-b15e-6f885db599da', '0');
 INSERT INTO [BD_Biogas_Liqsys_unidades] VALUES ('413', 'C301', '245', 'PORTATIL', 'CILINDROS', 'BIOGAS', '0', '0', '0,0,0,0,0,0', '0', 'N/D', 'N/D', 'N/D', 'N/D', '2018-12-21', 'N/D', 'NINGUNO', 'NINGUNO', '0', '0.00', '0.0000', '0.0000', '0.00', '0', '0', 'ACTIVA', '0', '-1', 'SIN PERMISO', null, '0');
 --SET FOREIGN_KEY_CHECKS=1;
+
+
+GO
+
+-- ===============================================
+SET NOCOUNT OFF
+-- ===============================================
+GO
