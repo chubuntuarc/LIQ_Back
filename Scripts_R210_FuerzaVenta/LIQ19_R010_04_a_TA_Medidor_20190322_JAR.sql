@@ -319,12 +319,12 @@ GO
 -- //////////////////////////////////////////////////////////////
 
 
-IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_CI_TIPO_MEDIDOR]') AND type in (N'P', N'PC'))
-	DROP PROCEDURE [dbo].[PG_CI_TIPO_MEDIDOR]
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_CI_MEDIDOR]') AND type in (N'P', N'PC'))
+	DROP PROCEDURE [dbo].[PG_CI_MEDIDOR]
 GO
 
 
-CREATE PROCEDURE [dbo].[PG_CI_TIPO_MEDIDOR]
+CREATE PROCEDURE [dbo].[PG_CI_MEDIDOR]
 	@PP_L_DEBUG					INT,
 	@PP_K_SISTEMA_EXE			INT,
 	-- ========================================
@@ -332,15 +332,21 @@ CREATE PROCEDURE [dbo].[PG_CI_TIPO_MEDIDOR]
 	@PP_D_MEDIDOR			VARCHAR(100),
 	@PP_S_MEDIDOR			VARCHAR(10),
 	@PP_O_MEDIDOR			INT,
-	@PP_L_MEDIDOR			INT
+	@PP_L_MEDIDOR			INT,
+	-- ===============================
+	@PP_K_ESTATUS_MEDIDOR	INT,
+	@PP_K_TIPO_MEDIDOR		INT
 AS
 	-- ===============================
+	-- K_USUARIO // 0	SYS/SETUP
+	DECLARE @VP_K_USUARIO_ACCION		INT = 0 
+	DECLARE @VP_O_PRODUCTO				INT = 0
 
 	DECLARE @VP_K_EXISTE	INT
 
-	SELECT	@VP_K_EXISTE =	K_TIPO_MEDIDOR
-							FROM	TIPO_MEDIDOR
-							WHERE	K_TIPO_MEDIDOR=@PP_K_MEDIDOR
+	SELECT	@VP_K_EXISTE =	K_MEDIDOR
+							FROM	MEDIDOR
+							WHERE	K_MEDIDOR=@PP_K_MEDIDOR
 
 	-- ===============================
 
@@ -348,17 +354,27 @@ AS
 		INSERT INTO MEDIDOR
 			(	K_MEDIDOR,				D_MEDIDOR, 
 				S_MEDIDOR,				O_MEDIDOR,
-				L_MEDIDOR		)
+				L_MEDIDOR,
+				K_ESTATUS_MEDIDOR,		K_TIPO_MEDIDOR,
+				-- ===========================
+				[K_USUARIO_ALTA], [F_ALTA], [K_USUARIO_CAMBIO], [F_CAMBIO],
+				[L_BORRADO], [K_USUARIO_BAJA], [F_BAJA]  )
 		VALUES	
 			(	@PP_K_MEDIDOR,			@PP_D_MEDIDOR,	
 				@PP_S_MEDIDOR,			@PP_O_MEDIDOR,
-				@PP_L_MEDIDOR		)
+				@PP_L_MEDIDOR,
+				@PP_K_ESTATUS_MEDIDOR,	@PP_K_TIPO_MEDIDOR,
+				-- ===========================
+				@VP_K_USUARIO_ACCION, GETDATE(), @VP_K_USUARIO_ACCION, GETDATE(),
+				0, NULL, NULL  )
 	ELSE
 		UPDATE	MEDIDOR
 		SET		D_MEDIDOR		= @PP_D_MEDIDOR,	
 				S_MEDIDOR		= @PP_S_MEDIDOR,			
 				O_MEDIDOR		= @PP_O_MEDIDOR,
-				L_MEDIDOR		= @PP_L_MEDIDOR
+				L_MEDIDOR		= @PP_L_MEDIDOR,
+				K_ESTATUS_MEDIDOR=@PP_K_ESTATUS_MEDIDOR,
+				K_TIPO_MEDIDOR	= @PP_K_TIPO_MEDIDOR
 		WHERE	K_MEDIDOR=@PP_K_MEDIDOR
 
 	-- =========================================================
@@ -373,9 +389,9 @@ SET NOCOUNT ON
 
 
 -- ==========================================
-EXECUTE [dbo].[PG_CI_TIPO_MEDIDOR] 0, 0,  1, 'NINGUNO',				'NIN',0, 1
-EXECUTE [dbo].[PG_CI_TIPO_MEDIDOR] 0, 0,  2, 'GASPAR G4S',			'G4S',0, 1
-EXECUTE [dbo].[PG_CI_TIPO_MEDIDOR] 0, 0,  3, 'GASPAR TRADICIONAL',	'TRA',0, 1
+EXECUTE [dbo].[PG_CI_MEDIDOR] 0, 0,  1, 'NINGUNO',				'NIN',0, 1, 1, 1
+EXECUTE [dbo].[PG_CI_MEDIDOR] 0, 0,  2, 'GASPAR G4S',			'G4S',0, 1, 1, 2
+EXECUTE [dbo].[PG_CI_MEDIDOR] 0, 0,  3, 'GASPAR TRADICIONAL',	'TRA',0, 1, 1, 3
 
 GO
 

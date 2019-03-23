@@ -39,10 +39,11 @@ CREATE TABLE [dbo].[FICHA_AUTOTANQUE] (
 	-- ============================	
 	[K_PUNTO_VENTA]						[INT]			NOT NULL,
 	-- ============================		
+	[K_MARCA]							[INT]			NOT NULL,
+	-- ============================		
 	[LECTURA_INICIAL]					[INT]			NOT NULL,
 	[LECTURA_FINAL]						[INT]			NOT NULL,
 	[MATRICULA]							[VARCHAR](100)	NOT NULL,
-	[MARCA]								[VARCHAR](100)	NOT NULL,
 	[MODELO]							[VARCHAR](100)	NOT NULL,
 	[KILOMETRAJE]						[DECIMAL](19,4)	NOT NULL,
 	[SERIE]								[VARCHAR](100)	NOT NULL,
