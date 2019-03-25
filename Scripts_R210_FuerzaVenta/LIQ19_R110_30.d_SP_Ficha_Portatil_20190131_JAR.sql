@@ -48,7 +48,7 @@ AS
 
 	-- ///////////////////////////////////////////
 		
-	DECLARE @VP_L_APLICAR_MAX_ROWS	INT=1
+	DECLARE @VP_L_APLICAR_MAX_ROWS	INT=0
 	DECLARE @VP_LI_N_REGISTROS		INT
 
 	EXECUTE [dbo].[PG_SK_CONFIGURACION_LI_N_REGISTROS_GET]	@PP_L_DEBUG, @PP_K_SISTEMA_EXE,
@@ -83,7 +83,7 @@ AS
 	WHERE	FICHA_PORTATIL.K_USUARIO_CAMBIO=USUARIO.K_USUARIO
 			-- ==============================
 	AND		(	MATRICULA				LIKE '%'+@PP_BUSCAR+'%' 
-			OR	MARCA					LIKE '%'+@PP_BUSCAR+'%'
+			OR	K_MARCA					LIKE '%'+@PP_BUSCAR+'%'
 			OR	MODELO					LIKE '%'+@PP_BUSCAR+'%' 
 			OR	FICHA_PORTATIL.K_FICHA_PORTATIL=@VP_K_FOLIO	)	
 			-- ==============================
@@ -168,9 +168,10 @@ CREATE PROCEDURE [dbo].[PG_IN_FICHA_PORTATIL]
 	@PP_K_USUARIO_ACCION		INT,
 	-- ===========================			
 	@PP_K_PUNTO_VENTA			INT,
+	-- ============================	
+	@PP_K_MARCA 				INT,	
 	-- ============================		
 	@PP_MATRICULA				VARCHAR(100),
-	@PP_MARCA 					VARCHAR(100),
 	@PP_MODELO					VARCHAR(100),
 	@PP_KILOMETRAJE				DECIMAL(19,4),
 	@PP_SERIE					VARCHAR(100),
@@ -207,7 +208,9 @@ AS
 			-- ===========================
 			[K_PUNTO_VENTA],
 			-- ===========================
-			[MATRICULA], [MARCA], [MODELO],
+			[K_MARCA],
+			-- ===========================
+			[MATRICULA], [MODELO],
 			[KILOMETRAJE], [SERIE],
 			[CAPACIDAD],
 			-- ===========================
@@ -218,7 +221,9 @@ AS
 				-- ===========================
 				@PP_K_PUNTO_VENTA,
 				-- ===========================
-				@PP_MATRICULA, @PP_MARCA, @PP_MODELO,
+				@PP_K_MARCA,
+				-- ===========================
+				@PP_MATRICULA, @PP_MODELO,
 				@PP_KILOMETRAJE, @PP_SERIE,
 				@PP_CAPACIDAD,
 				-- ===========================
@@ -257,6 +262,7 @@ IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_UP_
 	DROP PROCEDURE [dbo].[PG_UP_FICHA_PORTATIL]
 GO
 
+-- EXEC [dbo].[PG_UP_FICHA_PORTATIL] 0,2005,0,'N/D',204,1995,2099804.0000, '1GO17H1P45J520018',12500
 CREATE PROCEDURE [dbo].[PG_UP_FICHA_PORTATIL]
 	@PP_L_DEBUG					INT,
 	@PP_K_SISTEMA_EXE			INT,
@@ -264,8 +270,9 @@ CREATE PROCEDURE [dbo].[PG_UP_FICHA_PORTATIL]
 	-- ===========================		
 	@PP_K_PUNTO_VENTA			INT,
 	-- ============================		
+	@PP_K_MARCA 				INT,
+	-- ============================		
 	@PP_MATRICULA				VARCHAR(100),
-	@PP_MARCA 					VARCHAR(100),
 	@PP_MODELO					VARCHAR(100),
 	@PP_KILOMETRAJE				DECIMAL(19,4),
 	@PP_SERIE					VARCHAR(100),
@@ -293,8 +300,9 @@ AS
 		SET			
 				[K_PUNTO_VENTA]			= @PP_K_PUNTO_VENTA, 
 				-- ===========================
+				[K_MARCA]					= @PP_K_MARCA,
+				-- ===========================
 				[MATRICULA]				= @PP_MATRICULA,
-				[MARCA]					= @PP_MARCA,
 				[MODELO]				= @PP_MODELO,
 				[KILOMETRAJE]			= @PP_KILOMETRAJE,
 				[SERIE]					= @PP_SERIE,

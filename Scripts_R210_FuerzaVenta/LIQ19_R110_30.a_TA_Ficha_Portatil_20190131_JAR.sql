@@ -35,12 +35,13 @@ GO
 -- //////////////////////////////////////////////////////////////
 
 CREATE TABLE [dbo].[FICHA_PORTATIL] (
-	[K_FICHA_PORTATIL]				[INT]			NOT NULL,
+	[K_FICHA_PORTATIL]					[INT]			NOT NULL,
 	-- ============================	
 	[K_PUNTO_VENTA]						[INT]			NOT NULL,
 	-- ============================		
+	[k_MARCA]							[INT]	NOT NULL,
+	-- ============================		
 	[MATRICULA]							[VARCHAR](100)	NOT NULL,
-	[MARCA]								[VARCHAR](100)	NOT NULL,
 	[MODELO]							[VARCHAR](100)	NOT NULL,
 	[KILOMETRAJE]						[DECIMAL](19,4)	NOT NULL,
 	[SERIE]								[VARCHAR](100)	NOT NULL,

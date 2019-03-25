@@ -271,10 +271,11 @@ EXECUTE [dbo].[PG_CI_SUBMENU] 0, 0,  1, 1, 'PRODUCTO',			'PRODUCTO', 1, '', 1, '
 EXECUTE [dbo].[PG_CI_SUBMENU] 0, 0,  2, 1, 'OPERADOR',			'OPE', 1, '', 1, 'Operadores'
 EXECUTE [dbo].[PG_CI_SUBMENU] 0, 0,  3, 1, 'FICHA_AUTOTANQUE',	'AUT', 1, '', 1, 'Puntos de venta | Autotanque'
 EXECUTE [dbo].[PG_CI_SUBMENU] 0, 0,  4, 1, 'FICHA_ESTACION_CARBURACION',	'EST', 1, '', 1, 'Puntos de venta | Estación de carburación'
-EXECUTE [dbo].[PG_CI_SUBMENU] 0, 0,  5, 1, 'PRELIQUIDACION',	'PRE', 1, '', 1, 'Preliquidaciones'
+EXECUTE [dbo].[PG_CI_SUBMENU] 0, 0,  5, 1, 'FICHA_PORTATIL',	'POR', 1, '', 1, 'Puntos de venta | Portatil'
+EXECUTE [dbo].[PG_CI_SUBMENU] 0, 0,  6, 1, 'PRELIQUIDACION',	'PRE', 1, '', 1, 'Preliquidaciones'
 
-EXECUTE [dbo].[PG_CI_SUBMENU] 0, 0,  6, 2, 'SUB_1',				'SU1', 1, '', 1, 'SUB2_1'
-EXECUTE [dbo].[PG_CI_SUBMENU] 0, 0,  7, 2, 'SUB_2',				'SU2', 1, '', 1, 'SUB2_2'
+EXECUTE [dbo].[PG_CI_SUBMENU] 0, 0,  7, 2, 'SUB_1',				'SU1', 1, '', 1, 'SUB2_1'
+EXECUTE [dbo].[PG_CI_SUBMENU] 0, 0,  8, 2, 'SUB_2',				'SU2', 1, '', 1, 'SUB2_2'
 GO
 
 
