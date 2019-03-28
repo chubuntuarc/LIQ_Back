@@ -1,13 +1,10 @@
 -- //////////////////////////////////////////////////////////////
 -- // ARCHIVO:			
 -- //////////////////////////////////////////////////////////////
--- // BASE DE DATOS:	SYS19_BasicBD_20190319
+-- // BASE DE DATOS:	SYS19_BasicBD_20190325
 -- // MODULO:			SOPORTE - VALOR_PARAMETRO
 -- // OPERACION:		LIBERACION / DATOS
 -- //////////////////////////////////////////////////////////////
--- // AGREGAR @SISTEMA EN GET DE VALOR/PARAMETROS >>>> TIENE IMPACTOS EN OTROS SPS
--- // AGREGAR @AMBIENTE EN GET DE VALOR/PARAMETROS >>>> TIENE IMPACTOS EN OTROS SPS
--- ////////////////////////////////////////////////////////////// 
 
 USE [LIQ19_Liquidaciones_V9999_R0] 
 GO

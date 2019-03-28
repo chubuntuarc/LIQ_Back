@@ -17,6 +17,7 @@ GO
 /****************************************************************/
 
 -- DROP DATABASE [LIQ19_Liquidaciones_V9999_R0] 
+
  
 
 /****************************************************************/
@@ -24,12 +25,12 @@ GO
 /****************************************************************/
 
 CREATE DATABASE [LIQ19_Liquidaciones_V9999_R0] ON  PRIMARY 
-	(	NAME =		N'LIQ19_Liquidaciones_V0004_R0_DAT',	
-		FILENAME =	N'D:\TOMZA.SQL\LIQ19_BD\LIQ19_Liquidaciones_V0004_R0_DAT.mdf', 
+	(	NAME =		N'LIQ19_Liquidaciones_V0006_R0_DAT',	
+		FILENAME =	N'D:\TOMZA.SQL\LIQ19_BD\LIQ19_Liquidaciones_V0006_R0_DAT.mdf', 
 		SIZE = 6072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB						)
  LOG ON 
-	(	NAME =		N'LIQ19_Liquidaciones_V0004_R0_LOG',	
-		FILENAME =	N'D:\TOMZA.SQL\LIQ19_BD\LIQ19_Liquidaciones_V0004_R0_LOG.ldf',  
+	(	NAME =		N'LIQ19_Liquidaciones_V0006_R0_LOG',	
+		FILENAME =	N'D:\TOMZA.SQL\LIQ19_BD\LIQ19_Liquidaciones_V0006_R0_LOG.ldf',  
 		SIZE = 1280KB , MAXSIZE = 2048GB , FILEGROWTH = 10%								)
 GO 
 

@@ -1,7 +1,7 @@
 -- //////////////////////////////////////////////////////////////
 -- // ARCHIVO:			
 -- //////////////////////////////////////////////////////////////
--- // BASE DE DATOS:	SYS19_BasicBD_20190319
+-- // BASE DE DATOS:	SYS19_BasicBD_20190325
 -- // MODULO:			STORED PROCEDURES - CATALOGO T1xx
 -- // OPERACION:		LIBERACION
 -- //////////////////////////////////////////////////////////////
@@ -407,20 +407,8 @@ GO
 -- /////////////////////////////////////////////////////////////////
 -- //
 -- /////////////////////////////////////////////////////////////////
--- [PG_CB_TABLA_N1_Load] 1, 0, 0, 'CUENTA_BANCO', 1
-
--- [PG_CB_TABLA_N1_Load] 1, 0, 0, 'AUTORIZACION', 1, 1
--- [PG_CB_TABLA_N1_Load] 1, 0, 0, 'AUTORIZACION', 1, 0
-
 -- [PG_CB_TABLA_N1_Load] 1, 0, 0, 'ZONA_UO', 1, 1
 -- [PG_CB_TABLA_N1_Load] 1, 0, 0, 'ZONA_UO', 1, 0
-
--- [PG_CB_TABLA_N1_Load] 1, 0, 0, 'AUTORIZACION', 1, 0
-
-
----- [PG_CB_TABLA_N1_X_ORDEN_Load] 0, 0, 'EMPRESA', 0
--- [PG_CB_TABLA_N1_X_ORDEN_Load] 0, 0, 'ESTATUS_CLIENTE', 0
--- [PG_CB_TABLA_N1_X_ORDEN_Load] 0, 0, 'CONTRATO', 1
 
 
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_CB_TABLA_N1_Load]') AND type in (N'P', N'PC'))

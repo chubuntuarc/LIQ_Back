@@ -1,7 +1,7 @@
 -- //////////////////////////////////////////////////////////////
 -- // ARCHIVO:			
 -- //////////////////////////////////////////////////////////////
--- // BASE DE DATOS:	SYS19_BasicBD_20190319
+-- // BASE DE DATOS:	SYS19_BasicBD_20190325
 -- // MODULO:			UNIDAD OPERATIVA
 -- // OPERACION:		LIBERACION / CARGA INICIAL
 -- ////////////////////////////////////////////////////////////// 
@@ -13,21 +13,6 @@ GO
 
 
 
--- //////////////////////////////////////////////////////////////
-
-
---DELETE 
---FROM	[UNIDAD_OPERATIVA]
---WHERE	K_UNIDAD_OPERATIVA>9999
---GO
-
-
-
-
--- //////////////////////////////////////////////////////////////
--- // STORED PROCEDURE -->	CI - CARGA INICIAL
--- //////////////////////////////////////////////////////////////
--- SELECT * FROM UNIDAD_OPERATIVA
 
 
 
@@ -35,14 +20,10 @@ GO
 -- // CARGA INICIAL
 -- //////////////////////////////////////////////////////////////
 
+
 -- ===============================================
 SET NOCOUNT ON
 -- ===============================================
-
-
-
--- ====================================================================== CI_UNIDAD_OPERATIVA
-
 
 
 -- ====================================================================== CI_UNIDAD_OPERATIVA
@@ -71,7 +52,7 @@ EXECUTE [dbo].[PG_CI_UNIDAD_OPERATIVA] 0, 0, 10042, 'RZS - UNIGAS', 'RZS - UNIGA
 EXECUTE [dbo].[PG_CI_UNIDAD_OPERATIVA] 0, 0, 10007, 'RZS - COMPAÑIA MEXICANA DE GAS COMBUSTIBLE S.A. DE C.V. TEHUACAN', 'RZS - COMPAÑIA MEXICANA DE GAS COMBUSTIBLE S.A. DE C.V. TEHUACAN', 'RZS - COMP', 7000, 1, 50, 20, 0, 0, 7, 0, '', '', '', '', '', '', '', '', ''
 EXECUTE [dbo].[PG_CI_UNIDAD_OPERATIVA] 0, 0, 10054, 'RZS - TOMZA DE VERACRUZ (GAS)', 'RZS - TOMZA DE VERACRUZ (GAS)', 'RZS - TOMZ', 54000, 1, 50, 60, 0, 0, 54, 0, '', '', '', '', '', '', '', '', ''
 EXECUTE [dbo].[PG_CI_UNIDAD_OPERATIVA] 0, 0, 10090, 'RZS - TOMZA DE SINALOA (GAS)', 'RZS - TOMZA DE SINALOA (GAS)', 'RZS - TOMZ', 90000, 1, 50, 50, 0, 0, 90, 0, '', '', '', '', '', '', '', '', ''
-
+GO
 
 
 -- ===============================================

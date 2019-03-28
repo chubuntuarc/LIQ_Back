@@ -1,7 +1,7 @@
 -- //////////////////////////////////////////////////////////////
 -- // ARCHIVO:			
 -- //////////////////////////////////////////////////////////////
--- // BASE DE DATOS:	SYS19_BasicBD_20190319
+-- // BASE DE DATOS:	SYS19_BasicBD_20190325
 -- // MODULO:			
 -- // OPERACION:		LIBERACION // STORED PROCEDURE
 -- ////////////////////////////////////////////////////////////// 
@@ -17,19 +17,6 @@ GO
 -- //////////////////////////////////////////////////////////////
 -- // [PG_SK_CATALOGO_N_CONSECUTIVO_MAX_GET]
 -- //////////////////////////////////////////////////////////////
-
-/*
-
-DECLARE @VP_INT_N_RENGLON INT
-
-EXECUTE [dbo].[PG_SK_CATALOGO_N_CONSECUTIVO_MAX_GET]	0, 0,
-														'TABLA_AMORTIZACION',
-														'K_SIMULACION', 1, 
-														'N_PERIODO',
-														@OU_N_CONSECUTIVO = @VP_INT_N_RENGLON		OUTPUT
-SELECT @VP_INT_N_RENGLON
-
-*/
 
 
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_SK_CATALOGO_N_CONSECUTIVO_MAX_GET]') AND type in (N'P', N'PC'))

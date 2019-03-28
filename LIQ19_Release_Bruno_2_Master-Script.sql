@@ -56,7 +56,7 @@ DECLARE @VP_STR_RUTA_CONSTRUCCION		VARCHAR(MAX)
 
 SET @VP_STR_BASE_DATOS			= 'LIQ19_Liquidaciones_V9999_R0'
 SET @VP_STR_RUTA_PROYECTO		= 'D:\1.Tomza_HGF\TI_TecnologiaInformacion\2.Soluciones_TTi\'
-SET @VP_STR_RUTA_CONSTRUCCION	= 'LIQ19_Liquidaciones\4.Construccion\CodigoSQL\LIQ19_Liberacion_R0.00_Base_V0004\'
+SET @VP_STR_RUTA_CONSTRUCCION	= 'LIQ19_Liquidaciones\4.Construccion\CodigoSQL\LIQ19_Liberacion_R0.00_Base_V0006\'
 
 -- ========================================
 

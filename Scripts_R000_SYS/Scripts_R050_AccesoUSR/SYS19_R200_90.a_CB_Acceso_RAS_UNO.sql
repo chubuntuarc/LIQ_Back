@@ -1,68 +1,15 @@
 -- //////////////////////////////////////////////////////////////
 -- // ARCHIVO:			
 -- //////////////////////////////////////////////////////////////
--- // BASE DE DATOS:	SYS19_BasicBD_20190319
+-- // BASE DE DATOS:	SYS19_BasicBD_20190325
 -- // MODULO:			
 -- // OPERACION:		LIBERACION / STORED PROCEDURE
 -- //////////////////////////////////////////////////////////////
--- // Autor:			
--- // Fecha creación:
--- ////////////////////////////////////////////////////////////// 
 
 USE [LIQ19_Liquidaciones_V9999_R0] 
 GO
 
 -- //////////////////////////////////////////////////////////////
-
-
-DELETE FROM [SYS3_ACCESO_USR_X_RAS]
-
-DELETE FROM [SYS3_ACCESO_USR_X_ZON]
-
-GO
-
-
--- ////////////////////////////////////////////////////////////////
-
-INSERT INTO [SYS3_ACCESO_USR_X_RAS]
-	(		[K_SISTEMA], [K_USUARIO], [K_RAZON_SOCIAL], 
-			[L_ACCESO], 
-			[K_USUARIO_ALTA], [F_ALTA], 
-			[K_USUARIO_CAMBIO], [F_CAMBIO], 
-			[L_BORRADO], [K_USUARIO_BAJA], [F_BAJA]		)
-	SELECT	DISTINCT 
-			SYS3.[K_SISTEMA], SYS3.[K_USUARIO], RAZON_SOCIAL.[K_RAZON_SOCIAL], 
-			SYS3.[L_ACCESO], 
-			SYS3.[K_USUARIO_ALTA], SYS3.[F_ALTA], 
-			SYS3.[K_USUARIO_CAMBIO], SYS3.[F_CAMBIO], 
-			SYS3.[L_BORRADO], SYS3.[K_USUARIO_BAJA], SYS3.[F_BAJA]	
-	FROM	SYS3_ACCESO_USR_X_UNO AS SYS3, 
-			UNIDAD_OPERATIVA, RAZON_SOCIAL
-	WHERE	UNIDAD_OPERATIVA.K_RAZON_SOCIAL=RAZON_SOCIAL.K_RAZON_SOCIAL
-	AND		SYS3.K_UNIDAD_OPERATIVA=UNIDAD_OPERATIVA.K_UNIDAD_OPERATIVA
-
-GO
-
-
-
-INSERT INTO [SYS3_ACCESO_USR_X_ZON]
-	(		[K_SISTEMA], [K_USUARIO], [K_ZONA_UO], 
-			[L_ACCESO], 
-			[K_USUARIO_ALTA], [F_ALTA], 
-			[K_USUARIO_CAMBIO], [F_CAMBIO], 
-			[L_BORRADO], [K_USUARIO_BAJA], [F_BAJA]		)
-	SELECT	DISTINCT 
-			SYS3.[K_SISTEMA], SYS3.[K_USUARIO], ZONA_UO.[K_ZONA_UO], 
-			SYS3.[L_ACCESO], 
-			SYS3.[K_USUARIO_ALTA], SYS3.[F_ALTA], 
-			SYS3.[K_USUARIO_CAMBIO], SYS3.[F_CAMBIO], 
-			SYS3.[L_BORRADO], SYS3.[K_USUARIO_BAJA], SYS3.[F_BAJA]	
-	FROM	SYS3_ACCESO_USR_X_UNO AS SYS3, 
-			UNIDAD_OPERATIVA, ZONA_UO
-	WHERE	UNIDAD_OPERATIVA.K_ZONA_UO=ZONA_UO.K_ZONA_UO
-	AND		SYS3.K_UNIDAD_OPERATIVA=UNIDAD_OPERATIVA.K_UNIDAD_OPERATIVA
-
-GO
 
 
 
@@ -71,7 +18,9 @@ GO
 -- ////////////////////////////////////////////////////////////////
 -- SELECT * FROM USUARIO
 
--- EXECUTE [PG_CB_UNIDAD_OPERATIVA_x_AccesoLoad] 0,2006,169,  1,1,  -1, -1
+-- EXECUTE [PG_CB_UNIDAD_OPERATIVA_x_AccesoLoad] 0,2005,0018,  1,1,  -1, -1
+
+-- EXECUTE [PG_CB_UNIDAD_OPERATIVA_x_AccesoLoad] 0,2005,1103,  1,1,  -1, -1
 
 
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_CB_UNIDAD_OPERATIVA_x_AccesoLoad]') AND type in (N'P', N'PC'))
@@ -136,7 +85,6 @@ AS
 		-- =================================
 		AND		UNIDAD_OPERATIVA.K_UNIDAD_OPERATIVA=SYS_ACCESO.K_UNIDAD_OPERATIVA
 
-
 	-- ==========================================
 
 	UPDATE	#VP_TA_CATALOGO
@@ -191,7 +139,7 @@ GO
 -- ////////////////////////////////////////////////////////////////
 -- SELECT * FROM USUARIO
 
--- EXECUTE [PG_CB_RAZON_SOCIAL_x_AccesoLoad] 0,2006,169,  1,1,  -1, -1
+-- EXECUTE [PG_CB_RAZON_SOCIAL_x_AccesoLoad] 0,2006,169,  1,1,  -1
 
 
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PG_CB_RAZON_SOCIAL_x_AccesoLoad]') AND type in (N'P', N'PC'))
@@ -413,6 +361,7 @@ GO
 
 
 -- ///////////////////////////////////////////////////////////
+
 
 /*
 

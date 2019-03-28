@@ -1,7 +1,7 @@
 -- //////////////////////////////////////////////////////////////
 -- // ARCHIVO:			
 -- //////////////////////////////////////////////////////////////
--- // BASE DE DATOS:	SYS19_BasicBD_20190319
+-- // BASE DE DATOS:	SYS19_BasicBD_20190325
 -- // MODULO:			GEOGRAFIA
 -- // OPERACION:		LIBERACION / TABLAS
 -- ////////////////////////////////////////////////////////////// 
@@ -17,24 +17,6 @@ GO
 -- //////////////////////////////////////////////////////////////
 -- // DROPs
 -- //////////////////////////////////////////////////////////////
-/*
-
-SELECT	PAIS.K_PAIS,		D_PAIS, 
-		ESTADO.K_ESTADO,	D_ESTADO
-FROM	PAIS, ESTADO
-WHERE	PAIS.K_PAIS=ESTADO.K_PAIS
-
-
-SELECT	PAIS.K_PAIS, D_PAIS, 
-		ESTADO.K_ESTADO, D_ESTADO,
-		REGION.K_REGION,   D_REGION
-FROM	PAIS, ESTADO,
-		REGION
-WHERE	PAIS.K_PAIS=ESTADO.K_PAIS
-AND		ESTADO.K_ESTADO=REGION.K_ESTADO
-
-
-*/
 
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[REGION]') AND type in (N'U'))
 	DROP TABLE [dbo].[REGION]
@@ -43,7 +25,6 @@ GO
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ESTADO]') AND type in (N'U'))
 	DROP TABLE [dbo].[ESTADO]
 GO
-
 
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PAIS]') AND type in (N'U'))
 	DROP TABLE [dbo].[PAIS]

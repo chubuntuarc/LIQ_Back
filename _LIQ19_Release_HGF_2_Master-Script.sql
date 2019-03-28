@@ -56,7 +56,7 @@ DECLARE @VP_STR_RUTA_CONSTRUCCION		VARCHAR(MAX)
 
 SET @VP_STR_BASE_DATOS			= 'LIQ19_Liquidaciones_V9999_R0'
 SET @VP_STR_RUTA_PROYECTO		= 'D:\Tomza.TI\HGonzalezF.TI\1.SOL_Soluciones\'
-SET @VP_STR_RUTA_CONSTRUCCION	= 'LIQ19_Liquidaciones\Codigo\CodigoSQL\LIQ19_Liberacion_R0.00_Base_V0004\'
+SET @VP_STR_RUTA_CONSTRUCCION	= 'LIQ19_Liquidaciones\Codigo\CodigoSQL\LIQ19_Liberacion_R0.00_Base_V0006\'
 
 -- ========================================
 
@@ -84,7 +84,8 @@ DECLARE @VP_IN_PROCESAR_ARCHIVO			INT
 	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R000_SYS\Scripts_R040_Servers\')
 	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R000_SYS\Scripts_R041_EstructuraUNO\')
 	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R000_SYS\Scripts_R050_AccesoUSR\')
-	-- ========================================
+	-- ========================================	
+	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R001_Identity\')
 	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R015_Sys_SetUp\')
 	-- ========================================
 	INSERT INTO @VP_TBL_SQLFolders VALUES ('Scripts_R100_Biogas\')
