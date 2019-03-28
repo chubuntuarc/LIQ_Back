@@ -39,7 +39,7 @@ CREATE TABLE [dbo].[FICHA_PORTATIL] (
 	-- ============================	
 	[K_PUNTO_VENTA]						[INT]			NOT NULL,
 	-- ============================		
-	[k_MARCA]							[INT]	NOT NULL,
+	[K_MARCA]							[INT]			NOT NULL,
 	-- ============================		
 	[MATRICULA]							[VARCHAR](100)	NOT NULL,
 	[MODELO]							[VARCHAR](100)	NOT NULL,
