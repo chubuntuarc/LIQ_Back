@@ -371,8 +371,8 @@ SET NOCOUNT ON
 -- ===============================================
 
 EXECUTE [dbo].[PG_CI_ESTATUS_OPERADOR] 0, 0, 0, 'SIN DEFINIR',	'?????', 1, '', 0
-EXECUTE [dbo].[PG_CI_ESTATUS_OPERADOR] 0, 0, 1, 'ACTIVO',			'ACTIV', 1, '', 1
-EXECUTE [dbo].[PG_CI_ESTATUS_OPERADOR] 0, 0, 2, 'INACTIVO',		'INACT', 1, '', 0
+EXECUTE [dbo].[PG_CI_ESTATUS_OPERADOR] 0, 0, 1, 'ACTIVO',		'ACTIV', 2, '', 1
+EXECUTE [dbo].[PG_CI_ESTATUS_OPERADOR] 0, 0, 2, 'INACTIVO',		'INACT', 3, '', 1
 GO
 -- ===============================================
 SET NOCOUNT OFF
