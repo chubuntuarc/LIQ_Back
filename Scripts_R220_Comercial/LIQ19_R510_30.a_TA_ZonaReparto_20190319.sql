@@ -102,7 +102,7 @@ SET NOCOUNT ON
 -- ===============================================
 
 EXECUTE [dbo].[PG_CI_ESTATUS_ZONA_REPARTO] 0, 0, 0, 'INACTIVO',	'INAC', 20, '', 1
-EXECUTE [dbo].[PG_CI_ESTATUS_ZONA_REPARTO] 0, 0, 1, 'ACTIVO',		'ACTI', 10, '', 1
+EXECUTE [dbo].[PG_CI_ESTATUS_ZONA_REPARTO] 0, 0, 1, 'ACTIVO',	'ACTI', 10, '', 1
 GO
 
 -- ===============================================
@@ -123,7 +123,6 @@ CREATE TABLE [dbo].[ZONA_REPARTO] (
 	[K_ZONA_REPARTO]			INT				NOT NULL,
 	[C_ZONA_REPARTO]			VARCHAR (500)	NOT NULL,
 	-- ==============================================
---	[K_COBRADOR]				INT				NOT NULL,
 	[K_RUTA_REPARTO]			INT				NOT NULL,
 	-- ==============================================
 	[K_ESTATUS_ZONA_REPARTO]	INT				NOT NULL
@@ -136,16 +135,6 @@ ALTER TABLE [dbo].[ZONA_REPARTO]
 	ADD CONSTRAINT [PK_ZONA_REPARTO]
 		PRIMARY KEY CLUSTERED ( [K_ZONA_REPARTO] )
 GO
-
-
-/*
-
-CREATE UNIQUE NONCLUSTERED 
-	INDEX [UN_ZONA_REPARTO_K_COBRADOR_K_RUTA_REPARTO] 
-	   ON [dbo].[ZONA_REPARTO] ( [K_COBRADOR], [K_RUTA_REPARTO] )
-GO
-
-*/
 
 -- //////////////////////////////////////////////////////
 

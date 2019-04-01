@@ -188,7 +188,7 @@ SET NOCOUNT ON
 -- ===============================================
 
 EXECUTE [dbo].[PG_CI_ESTATUS_RUTA_REPARTO] 0, 0, 0, 'INACTIVO',	'INAC', 20, '', 1
-EXECUTE [dbo].[PG_CI_ESTATUS_RUTA_REPARTO] 0, 0, 1, 'ACTIVO',		'ACTI', 10, '', 1
+EXECUTE [dbo].[PG_CI_ESTATUS_RUTA_REPARTO] 0, 0, 1, 'ACTIVO',	'ACTI', 10, '', 1
 GO
 
 -- ===============================================
@@ -226,10 +226,6 @@ ALTER TABLE [dbo].[RUTA_REPARTO]
 		PRIMARY KEY CLUSTERED ([K_RUTA_REPARTO])
 GO
 
---CREATE UNIQUE NONCLUSTERED 
---	INDEX [UN_RUTA_REPARTO_01_DESCRIPCION] 
---	   ON [dbo].[RUTA_REPARTO] ( [D_RUTA_REPARTO] )
---GO
 
 -- //////////////////////////////////////////////////////
 
